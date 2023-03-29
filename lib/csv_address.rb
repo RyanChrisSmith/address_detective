@@ -1,4 +1,4 @@
-class Address
+class CsvAddress
   attr_reader :street,
               :city,
               :zip_code
