@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'dotenv'
 gem 'httparty'
 gem 'rspec'
-gem 'webmock'
-gem 'vcr'
-gem 'simplecov', require: false, group: :test
 gem 'rubocop'
 gem 'pry'
+gem 'simplecov', require: false, group: :test
+gem 'faraday'
+gem 'vcr'
+gem 'webmock'

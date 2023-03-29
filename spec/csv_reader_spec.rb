@@ -13,10 +13,10 @@ RSpec.describe CsvReader do
 
     it 'will return the addresses as Address objects' do
       reader = CsvReader.new
-      addresses = reader.read("./data/test_addresses.csv")
+      csv_addresses = reader.read("./data/test_addresses.csv")
 
-      expect(addresses.first).to be_a Address
-      expect(addresses.first.to_s).to eq("143 e Maine Street, Columbus, 43215")
+      expect(csv_addresses.first).to be_a Address
+      expect(csv_addresses.first.to_s).to eq("143 e Maine Street, Columbus, 43215")
     end
   end
 end
