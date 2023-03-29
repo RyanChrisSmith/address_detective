@@ -1,6 +1,6 @@
 require 'spec_helper'
 require './lib/csv_reader'
-require './lib/address'
+require './lib/csv_address'
 
 RSpec.describe CsvReader do
   describe 'CSV reader pulling info from the CSV file' do
@@ -15,7 +15,7 @@ RSpec.describe CsvReader do
       reader = CsvReader.new
       csv_addresses = reader.read("./data/test_addresses.csv")
 
-      expect(csv_addresses.first).to be_a Address
+      expect(csv_addresses.first).to be_a CsvAddress
       expect(csv_addresses.first.to_s).to eq("143 e Maine Street, Columbus, 43215")
     end
   end
