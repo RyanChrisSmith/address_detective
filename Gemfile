@@ -7,3 +7,4 @@ gem 'webmock'
 gem 'vcr'
 gem 'simplecov', require: false, group: :test
 gem 'rubocop'
+gem 'pry'

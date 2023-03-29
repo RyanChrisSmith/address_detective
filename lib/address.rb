@@ -4,9 +4,9 @@ class Address
               :zip_code
 
   def initialize(street, city, zip_code)
-    @street = street
-    @city = city
-    @zip_code = zip_code
+    @street = street.strip
+    @city = city.strip
+    @zip_code = zip_code.strip
   end
 
   def to_s
