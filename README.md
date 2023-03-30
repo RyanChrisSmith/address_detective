@@ -1,4 +1,5 @@
-# Project Title
+# Address Detective
+![Address Detective](images/detective.jpg)
 
 A brief description of the project.
 
