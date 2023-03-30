@@ -15,7 +15,9 @@
 </u>
 
 [Setup / Installation](#setup--installation)<br>
-[Running the Program and Tests](#running-the-program-and-tests)
+[Running the Program](#running-the-program)<br>
+[Testing](#testing)<br>
+[Reasoning and Decision Making](#reasoning-and-decision-making)<br>
 [Gems and Environment](#gems-and-environment)<br>
 [Usage](#usage)<br>
 [Features](#features)<br>
@@ -43,11 +45,41 @@
   - Create a file `$touch .env` which should create an empty `.env` file at the root level of the files
   - In that `.env` file add your keys as pictured below, but put your keys in the spaces that I have scratched out.
   <img src="images/screenshot.png">
+
   - Make sure to label the keys exactly the same as in the screenshot `SMARTY_AUTH_ID` and `SMARTY_AUTH_TOKEN` so that the keys will work properly when the program is run
 
 <u>
 
-## Running the Program and Tests
+## Running the Program
+</u>
+
+- Once you have finished the setup / installation, you are ready to run this beautiful program from your terminal
+- Run `$ruby runner.rb data/test_addresses.csv`
+- The response you should see in the terminal will look like this:
+```
+143 e Maine Street, Columbus, 43215 -> 143 E Main St, Columbus, 43215-5370
+1 Empora St, Title, 11111 -> Invalid Address
+24 Second Avenue, San Mateo, 94401 -> 24 2nd Ave, San Mateo, 94401-3828
+24 Second Avenue, San Mateo, 84405 -> Invalid Address
+800 Middle Avenue, Menlo Park, 94025-9881 -> 800 Middle Ave, Menlo Park, 94025-5121
+500 Arbor Road, Menlo Park, 94025 -> 500 Arbor Rd, Menlo Park, 94025-5132
+123 N. Elm St, Springfield, 65802 -> Invalid Address
+123 South Elm St, Springfield, 65802 -> Invalid Address
+1 Main St, New York, 10001-1111 -> 1 Main St, New York, 10044-0052
+1234 Random Rd, Smallville, 1234 -> Invalid Address
+123 Long Street, City, ABCDE -> Invalid Address
+1234 Second Street, Big City, 1234567 -> 1234 Second Street, Schenectady, 12345-0001
+```
+- Steps that your arent seeing behind the scenes:
+  - The program is reading from a static CSV file
+  - Creating individual addresses out of each line
+  - Sending that to a 3rd party API to verify the address
+  - Receiving a response from the API of whether its valid or not
+    - If it is valid it is giving you the official address with appropriate corrections
+  - Then showing that response after the lamda or `->` of the corrected address or `Invalid Address`
+<u>
+
+## Reasoning and Decision Making
 </u>
 
 
