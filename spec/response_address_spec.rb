@@ -18,5 +18,33 @@ RSpec.describe ResponseAddress do
 
       expect(unverified.full_response).to eq('Invalid Address')
     end
+
+    it "will return the street address when the 'street' method is called", :vcr do
+      returned_address = SmartyStreetsApi.confirm_address('123 Main St', 'Columbus', '43215')
+      response = ResponseAddress.new(returned_address)
+
+      expect(response.street).to eq('123 E Main St')
+    end
+
+    it "will return the city when the 'city' method is called", :vcr do
+      returned_address = SmartyStreetsApi.confirm_address('123 Main St', 'Columbus', '43215')
+      response = ResponseAddress.new(returned_address)
+
+      expect(response.city).to eq('Columbus')
+    end
+
+    it "will return the zip code when the 'zip' method is called", :vcr do
+      returned_address = SmartyStreetsApi.confirm_address('123 Main St', 'Columbus', '43215')
+      response = ResponseAddress.new(returned_address)
+
+      expect(response.zip).to eq('43215')
+    end
+
+    it "will return the plus4 code when the 'plus4_code' method is called", :vcr do
+      returned_address = SmartyStreetsApi.confirm_address('143 e Maine Street', 'Columbus', '43215')
+      response = ResponseAddress.new(returned_address)
+
+      expect(response.plus4_code).to eq('5370')
+    end
   end
 end
