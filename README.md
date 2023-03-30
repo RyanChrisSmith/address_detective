@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 # Address Detective
 
@@ -15,7 +15,6 @@ Transform your command-line into a Sherlock Holmes of sorts, capable of solving 
 [Installation](#installation)<br>
 [Usage](#usage)<br>
 [Features](#features)<br>
-[Contributing](#contributing)<br>
 [Testing](#testing)<br>
 [License](#license)<br>
 [Contact](#contact)
@@ -32,10 +31,6 @@ Instructions for using the project, including examples.
 
 A list of the project's features.
 
-## Contributing
-
-Guidelines for contributing to the project.
-
 ## Testing
 
 Instructions for running tests, including any necessary setup.
@@ -48,4 +43,4 @@ Information about the project's license.
 
 Instructions for contacting the project maintainers, including email addresses, social media links, or other relevant contact information.
 
-</center>
+</div>
