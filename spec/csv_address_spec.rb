@@ -7,7 +7,7 @@ RSpec.describe CsvAddress do
       @one_address = CsvAddress.new('143 e Maine Street', 'Columbus', '43215')
     end
 
-    it 'will make an CsvAddress object for each address from the CSV' do
+    it 'will make a CsvAddress object for each address from the CSV' do
       expect(@one_address).to be_a CsvAddress
     end
 
@@ -16,7 +16,7 @@ RSpec.describe CsvAddress do
     end
 
 
-    it 'will make an CsvAddress object with incomplete info' do
+    it 'will make a CsvAddress object with incomplete info' do
       incomplete_1 = CsvAddress.new('143 e Maine Street', 'Columbus', '43')
       incomplete_2 = CsvAddress.new('Street', 'Columbus', '43215')
       incomplete_3 = CsvAddress.new('143 e Maine Street', 'C', '43215')
