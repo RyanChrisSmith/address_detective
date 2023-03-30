@@ -2,7 +2,7 @@
 
 # *Address Detective*
 
-<div style="max-width: 1000px; max-height: 5px;">
+<div style="max-width: 1000px; max-height: 30px;">
   <img src="images/detective-3.jpg" alt="your_image_alt_text" style="width: 100%; height: 100%">
 </div>
 
@@ -18,7 +18,7 @@
 [Running the Program](#running-the-program)<br>
 [Testing](#testing)<br>
 [Reasoning and Decision Making](#reasoning-and-decision-making)<br>
-[Gems and Environment](#gems-and-environment)<br>
+[Gems](#gems)<br>
 [Usage](#usage)<br>
 [Features](#features)<br>
 [Testing](#testing)
@@ -27,9 +27,14 @@
 
 ## Setup / Installation
 </u>
+
+_ENVIRONMENT_
 </div>
 
-- This project assumes that you already have the necessary software installed on your machine to run a ruby program
+This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white) `VERSION 2.7.4` and was developed/tested with ![Mac](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) `VENTURA 13.2.1`
+
+
+- This project assumes that you already have the necessary software installed on your machine to run a ruby program, but if not follow the next sub points below:
   - Please note, any time you see `$` that is to signify the beginning of a terminal command, do not include the `$`
   - If not, you will need to look into installing a version manager such as `rbenv` to allow you to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
   - Once a version manager is installed, install ruby using `$rbenv install 2.7.4`
@@ -37,7 +42,7 @@
 
   _Now you are ready to move forward with this repo!_
 
-- Clone this Git repository to your local machine
+- Clone this Git repository to your local machine [here](https://github.com/RyanChrisSmith/address_detective)
 - `$cd address_detective` into the repo on your machine
 - Run `$bundle install` to add all the gems to your machine
 - Well, well, well, it looks like we have a secret agent in our midst! There's an API Key involved that's so top-secret, it doesn't even come with the repo! Gotta keep those classified files under lock and key, am I right?
@@ -47,6 +52,8 @@
   <img src="images/screenshot.png">
 
   - Make sure to label the keys exactly the same as in the screenshot `SMARTY_AUTH_ID` and `SMARTY_AUTH_TOKEN` so that the keys will work properly when the program is run
+
+### [Back to Table of Contents](#table-of-contents)
 
 <u>
 
@@ -76,21 +83,21 @@
   - Sending that to a 3rd party API to verify the address
   - Receiving a response from the API of whether its valid or not
     - If it is valid it is giving you the official address with appropriate corrections
-  - Then showing that response after the lamda or `->` of the corrected address or `Invalid Address`
+  - Then showing that response after the lamda or `->` with either the *corrected address* or `Invalid Address`
+
+### [Back to Table of Contents](#table-of-contents)
+
 <u>
 
 ## Reasoning and Decision Making
 </u>
 
+### [Back to Table of Contents](#table-of-contents)
 
 <u>
 
-## Gems and Environment
+## Gems
 </u>
-
-_ENVIRONMENT_
-
-This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white) `VERSION 2.7.4` and was developed with ![Mac](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) `VENTURA 13.2.1`
 
 _GEMS_
 
@@ -109,14 +116,32 @@ _GEMS_
 [VCR](https://github.com/vcr/vcr) - provides a way to record and replay HTTP interactions between a Ruby application and an external API. This gem depends on WebMock (next gem) to intercept HTTP requests and responses, and provide the necessary stubbing and recording capabilities.
 
 [WebMock](https://github.com/bblimke/webmock) - provides a way to stub HTTP requests and responses in Ruby tests
+
+### [Back to Table of Contents](#table-of-contents)
+
+<u>
+
 ## Usage
+</u>
 
 Instructions for using the project, including examples.
 
+### [Back to Table of Contents](#table-of-contents)
+<u>
+
+
 ## Features
+</u>
 
 A list of the project's features.
 
+### [Back to Table of Contents](#table-of-contents)
+
+<u>
+
 ## Testing
+</u>
 
 Instructions for running tests, including any necessary setup.
+
+### [Back to Table of Contents](#table-of-contents)
