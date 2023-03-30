@@ -25,14 +25,17 @@
 
 <u>
 
-## Setup / Installation
-</u>
-
 _ENVIRONMENT_
+</u>
 </div>
 
 This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white) `VERSION 2.7.4` and was developed/tested with ![Mac](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) `VENTURA 13.2.1`
+<br>
 
+<u>
+
+## Setup / Installation
+</u>
 
 - This project assumes that you already have the necessary software installed on your machine to run a ruby program, but if not follow the next sub points below:
   - Please note, any time you see `$` that is to signify the beginning of a terminal command, do not include the `$`
@@ -49,6 +52,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once your back I can direct you as to where they can go on your machine to stay safe and sound.
   - Create a file `$touch .env` which should create an empty `.env` file at the root level of the files
   - In that `.env` file add your keys as pictured below, but put your keys in the spaces that I have scratched out.
+
   <img src="images/screenshot.png">
 
   - Make sure to label the keys exactly the same as in the screenshot `SMARTY_AUTH_ID` and `SMARTY_AUTH_TOKEN` so that the keys will work properly when the program is run
