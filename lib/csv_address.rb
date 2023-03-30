@@ -19,7 +19,7 @@ class CsvAddress
   end
 
   # Return a string representation of the CsvAddress in the format "street, city, zip_code".
-  def to_s
+  def complete
     "#{street}, #{city}, #{zip_code}"
   end
 end
