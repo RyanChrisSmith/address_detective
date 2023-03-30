@@ -25,6 +25,13 @@ RSpec.describe CsvAddress do
       expect(incomplete_2).to be_a CsvAddress
       expect(incomplete_3).to be_a CsvAddress
     end
+
+    it 'will strip whitespace from the attributes' do
+      address = CsvAddress.new(' 143 e Maine Street  ', ' Columbus ', ' 43215 ')
+      expect(address.street).to eq('143 e Maine Street')
+      expect(address.city).to eq('Columbus')
+      expect(address.zip_code).to eq('43215')
+    end
   end
 
   describe '#complete' do
@@ -43,5 +50,4 @@ RSpec.describe CsvAddress do
       end
     end
   end
-
 end
