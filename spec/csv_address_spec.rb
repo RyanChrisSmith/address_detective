@@ -27,10 +27,10 @@ RSpec.describe CsvAddress do
     end
   end
 
-  describe '#to_s' do
+  describe '#complete' do
     it 'will return the address as one string' do
       one_address = CsvAddress.new('143 e Maine Street', 'Columbus', '43215')
-      expect(one_address.to_s).to eq("143 e Maine Street, Columbus, 43215")
+      expect(one_address.complete).to eq("143 e Maine Street, Columbus, 43215")
     end
   end
 
