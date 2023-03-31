@@ -30,6 +30,7 @@ class SmartyStreetsApi
       req.params['auth-id'] = ENV['SMARTY_AUTH_ID']
       req.params['auth-token'] = ENV['SMARTY_AUTH_TOKEN']
       req.params['candidates'] = '10'
+      req.response :raise_error
     end
   end
 end
