@@ -40,7 +40,7 @@ RSpec.describe SmartyStreetsApi do
         expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(JSON::ParserError)
       end
 
-      it 'handles 401 Unauthorized error for bad credentials correctly' do
+      it 'handles 401 Unauthorized error for bad credentials correctly', :vcr do
         allow(ENV).to receive(:[]).and_call_original
         allow(ENV).to receive(:[]).with('SMARTY_AUTH_ID').and_return('invalid_id')
         allow(ENV).to receive(:[]).with('SMARTY_AUTH_TOKEN').and_return('invalid_token')
@@ -48,6 +48,36 @@ RSpec.describe SmartyStreetsApi do
         expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::UnauthorizedError) do |error|
           expect(error.response[:status]).to eq(401)
         end
+      end
+
+      it 'handles 402 Payment Required error' do
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Payment Required'))
+
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Payment Required')
+      end
+
+      it 'handles 413 Request Entity Too Large error' do
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Request Entity Too Large'))
+
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Request Entity Too Large')
+      end
+
+      it 'handles 400 Bad Request (Malformed Payload) error' do
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::BadRequestError.new('Bad Reqeust (Malformed Payload)'))
+
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::BadRequestError, 'Bad Reqeust (Malformed Payload)')
+      end
+
+      it 'handles 429 Too Many Requests error' do
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Payment Required'))
+
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Payment Required')
+      end
+
+      it 'handles a 500 server error' do
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ServerError.new('Server error'))
+
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ServerError, 'Server error')
       end
     end
   end
