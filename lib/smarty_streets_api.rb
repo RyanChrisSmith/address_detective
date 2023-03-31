@@ -13,9 +13,9 @@ class SmartyStreetsApi
   # - A hash containing the response from the SmartyStreets API.
   def self.confirm_address(street, city, zip_code)
     response = conn.get('/street-address?') do |req|
-      req.params['street'] = street.to_s
-      req.params['city'] = city.to_s
-      req.params['zipcode'] = zip_code.to_s
+      req.params['street'] = street
+      req.params['city'] = city
+      req.params['zipcode'] = zip_code
     end
     JSON.parse(response.body, symbolize_names: true)
   end
