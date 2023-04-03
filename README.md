@@ -35,21 +35,21 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 ## Setup / Installation
 </u>
 
-- Please note, any time you see `$` that is to signify the beginning of a terminal command, do not include the `$` in your input
-- This project assumes that you already have the necessary software installed on your machine to run a ruby program, but if not follow the next sub points below:
-  - If not, you will need to look into installing a version manager such as `rbenv` to allow you to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
+- Please note, any time `$` is in the command line prompt, that is to signify the beginning of a terminal command, do not include the `$` in the input
+- To install the necessary software to run a ruby program, please follow the sub points below:
+  - To install a version manager such as `rbenv` to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
   - Once a version manager is installed, install ruby using `$rbenv install 2.7.4`
-  - You will need a bundler for the gems already in the file, run that by inputting `$gem install bundler`
+  - To install a bundler for the gems already in the file, run that by inputting `$gem install bundler`
 
   _Now you are ready to move forward with this repo!_
 
 - Clone this Git repository to your local machine [here](https://github.com/RyanChrisSmith/address_detective)
-- `$cd address_detective` into the repo on your machine
-- Run `$bundle install` to add all the gems to your machine
+- `$cd address_detective` into the repo
+- Run `$bundle install` to add all the gems
 - Well, well, well, it looks like we have a secret agent in our midst! There's an API Key involved that's so top-secret, it doesn't even come with the repo! Gotta keep those classified files under lock and key, am I right?
-  - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once your back I can direct you as to where they can go on your machine to stay safe and sound.
+  - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once back I can direct you as to where they can go on your machine to stay safe and sound.
   - Create a file `$touch .env` which should create an empty `.env` file at the root level of the files
-  - In that `.env` file add your keys as pictured below, but put your keys in the spaces that I have scratched out.
+  - In that `.env` file add your keys as pictured below, but put the keys in the spaces that are scratched out.
 
   <img src="images/screenshot.png">
 
@@ -59,7 +59,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 
   <img src="images/screenshot-2.png">
 
-  - This way, your API keys will stay out of your commit history keeping them safe
+  - This way, the API keys will stay out of the commit history keeping them safe from prying eyes
 
 ### [Back to Table of Contents](#table-of-contents)
 
@@ -68,7 +68,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 ## Running the Program
 </u>
 
-- Once you have finished the setup / installation, you are ready to run this beautiful program from your terminal
+- Once setup / installation is finished, it is time to run this beautiful program from your terminal
 - Run `$ruby runner.rb data/test_addresses.csv`
 - The response you should see in the terminal will look like this:
 ```
@@ -85,7 +85,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 123 Long Street, City, ABCDE -> Invalid Address
 1234 Second Street, Big City, 1234567 -> 1234 Second Street, Schenectady, 12345-0001
 ```
-- Steps that your arent seeing behind the scenes:
+- Steps that aren't seeing behind the scenes:
   - The program is reading from a static CSV file
   - Creating individual addresses out of each line
   - Sending that to a 3rd party API to verify the address
