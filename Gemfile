@@ -16,14 +16,14 @@ group :development do
   gem 'pry'
   # rubocop is a code style checker and formatter for Ruby code.
   gem 'rubocop'
-  # rubocop for the testing suite of rspec
-  gem 'rubocop-rspec'
 end
 
 # These gems are used only in test environments.
 group :test do
   # rspec is a popular testing framework for Ruby.
   gem 'rspec'
+  # rubocop for the testing suite of rspec
+  gem 'rubocop-rspec'
   # simplecov is used for code coverage analysis.
   gem 'simplecov'
   # vcr is used for recording and replaying HTTP interactions in tests.

@@ -38,17 +38,19 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 - Please note, any time `$` is in the command line prompt, that is to signify the beginning of a terminal command, do not include the `$` in the input
 - To install the necessary software to run a ruby program, please follow the sub points below:
   - To install a version manager such as `rbenv` to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
-  - Once a version manager is installed, install ruby using `$rbenv install 2.7.4`
-  - To install a bundler for the gems already in the file, run that by inputting `$gem install bundler`
+  - Once a version manager is installed, install ruby using `$ rbenv install 2.7.4`
+  - To install a bundler for the gems already in the file, run that by inputting `$ gem install bundler`
+  - If the preference is to view this README in a more documentation style manner without the formatting, there are some YARD files created to do just that.
+    - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
 
   _Now you are ready to move forward with this repo!_
 
 - Clone this Git repository to your local machine [here](https://github.com/RyanChrisSmith/address_detective)
 - `$cd address_detective` into the repo
-- Run `$bundle install` to add all the gems
+- Run `$ bundle install` to add all the gems
 - Well, well, well, it looks like we have a secret agent in our midst! There's an API Key involved that's so top-secret, it doesn't even come with the repo! Gotta keep those classified files under lock and key, am I right?
   - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once back I can direct you as to where they can go on your machine to stay safe and sound.
-  - Create a file `$touch .env` which should create an empty `.env` file at the root level of the files
+  - Create a file `$ touch .env` which should create an empty `.env` file at the root level of the files
   - In that `.env` file add your keys as pictured below, but put the keys in the spaces that are scratched out.
 
   <img src="images/screenshot.png">
@@ -69,7 +71,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 </u>
 
 - Once setup / installation is finished, it is time to run this beautiful program from your terminal
-- Run `$ruby runner.rb data/test_addresses.csv`
+- Run `$ ruby runner.rb data/test_addresses.csv`
 - The response you should see in the terminal will look like this:
 ```
 143 e Maine Street, Columbus, 43215 -> 143 E Main St, Columbus, 43215-5370
@@ -140,11 +142,11 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
 </u>
 
 - _If you would like to run the test suite_
-  - Run `$bundle exec rspec` to execute the whole test suite
-  - You will notice beyond the passing tests that `simplecov` is generating a Coverage Report. This helps to identify any code that was written is actually being tested. You can `$open coverage/index.html` to see a visual representation of what is being covered.
+  - Run `$ bundle exec rspec` to execute the whole test suite
+  - You will notice beyond the passing tests that `simplecov` is generating a Coverage Report. This helps to identify any code that was written is actually being tested. You can `$ open coverage/index.html` to see a visual representation of what is being covered.
 
 - _If you would like to check the code for any known vulnerabilities_
-  - Run `$bundle audit check --update`
+  - Run `$ bundle audit check --update`
   - Using the update flag makes sure that the gem is checking with the most recently known advisories and vulnerabilities
 
 - _There should be a fixtures folder within the spec folder_
