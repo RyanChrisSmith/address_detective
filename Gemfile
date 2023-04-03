@@ -14,6 +14,8 @@ group :development do
   gem 'pry'
   # rubocop is a code style checker and formatter for Ruby code.
   gem 'rubocop'
+  # rubocop for the testing suite of rspec
+  gem 'rubocop-rspec'
 end
 
 # These gems are used only in test environments.

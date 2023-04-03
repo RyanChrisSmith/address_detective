@@ -3,7 +3,7 @@ require './lib/csv_address'
 require './lib/response_address'
 require './lib/smarty_streets_api'
 
-class Runner 
+class Runner
   # Get the CSV file path from the command line arguments
   csv_file_path = ARGV[0]
 

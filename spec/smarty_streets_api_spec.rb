@@ -15,7 +15,7 @@ RSpec.describe SmartyStreetsApi do
   end
 
   describe 'sad path' do
-    it "will respond with an empty array when the address does not exist", :vcr do
+    it 'will respond with an empty array when the address does not exist', :vcr do
       response = SmartyStreetsApi.confirm_address('1 Empora St', 'Title', '11111')
 
       expect(response).to eq([])
@@ -25,13 +25,17 @@ RSpec.describe SmartyStreetsApi do
       it 'handles a connection error' do
         allow(SmartyStreetsApi).to receive(:conn).and_raise(Faraday::ConnectionFailed.new('Could not connect'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ConnectionFailed)
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345')
+        end.to raise_error(Faraday::ConnectionFailed)
       end
 
       it 'handles a timeout error' do
         allow(SmartyStreetsApi).to receive(:conn).and_raise(Faraday::TimeoutError.new('Request timed out'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::TimeoutError)
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345')
+        end.to raise_error(Faraday::TimeoutError)
       end
 
       it 'handles an invalid JSON response' do
@@ -45,7 +49,10 @@ RSpec.describe SmartyStreetsApi do
         allow(ENV).to receive(:[]).with('SMARTY_AUTH_ID').and_return('invalid_id')
         allow(ENV).to receive(:[]).with('SMARTY_AUTH_TOKEN').and_return('invalid_token')
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::UnauthorizedError) do |error|
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::UnauthorizedError) do |error|
           expect(error.response[:status]).to eq(401)
         end
       end
@@ -53,31 +60,46 @@ RSpec.describe SmartyStreetsApi do
       it 'handles 402 Payment Required error' do
         allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Payment Required'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Payment Required')
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::ClientError, 'Payment Required')
       end
 
       it 'handles 413 Request Entity Too Large error' do
         allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Request Entity Too Large'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Request Entity Too Large')
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::ClientError, 'Request Entity Too Large')
       end
 
       it 'handles 400 Bad Request (Malformed Payload) error' do
         allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::BadRequestError.new('Bad Reqeust (Malformed Payload)'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::BadRequestError, 'Bad Reqeust (Malformed Payload)')
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::BadRequestError, 'Bad Reqeust (Malformed Payload)')
       end
 
       it 'handles 429 Too Many Requests error' do
         allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Too Many Requests'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Too Many Requests')
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::ClientError, 'Too Many Requests')
       end
 
       it 'handles a 500 server error' do
         allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ServerError.new('Server error'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ServerError, 'Server error')
+        expect do
+          SmartyStreetsApi.confirm_address('123 Main St', 'Anytown',
+                                           '12345')
+        end.to raise_error(Faraday::ServerError, 'Server error')
       end
     end
   end

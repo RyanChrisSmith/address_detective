@@ -12,9 +12,8 @@ RSpec.describe CsvAddress do
     end
 
     it 'has attributes' do
-      expect(@one_address.instance_variables).to eq(%i(@street @city @zip_code))
+      expect(@one_address.instance_variables).to eq(%i[@street @city @zip_code])
     end
-
 
     it 'will make a CsvAddress object with incomplete info' do
       incomplete_1 = CsvAddress.new('143 e Maine Street', 'Columbus', '43')
@@ -37,7 +36,7 @@ RSpec.describe CsvAddress do
   describe '#complete' do
     it 'will return the address as one string' do
       one_address = CsvAddress.new('143 e Maine Street', 'Columbus', '43215')
-      expect(one_address.complete).to eq("143 e Maine Street, Columbus, 43215")
+      expect(one_address.complete).to eq('143 e Maine Street, Columbus, 43215')
     end
   end
 
@@ -45,8 +44,12 @@ RSpec.describe CsvAddress do
     describe 'empty attributes' do
       it 'will return an argument error if any one of the attributes are empty' do
         expect { CsvAddress.new('', 'Columbus', '43215') }.to raise_error(ArgumentError, "street can't be blank")
-        expect { CsvAddress.new('143 e Maine Street', '', '43215') }.to raise_error(ArgumentError, "city can't be blank")
-        expect { CsvAddress.new('143 e Maine Street', 'Columbus', '') }.to raise_error(ArgumentError, "zip code can't be blank")
+        expect do
+          CsvAddress.new('143 e Maine Street', '', '43215')
+        end.to raise_error(ArgumentError, "city can't be blank")
+        expect do
+          CsvAddress.new('143 e Maine Street', 'Columbus', '')
+        end.to raise_error(ArgumentError, "zip code can't be blank")
       end
     end
   end

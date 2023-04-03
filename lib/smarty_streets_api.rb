@@ -3,7 +3,6 @@ require 'dotenv/load'
 require 'json'
 
 class SmartyStreetsApi
-
   # A public class method that makes a request to the SmartyStreets API to confirm the validity of an address.
   # Params:
   # - street: a string representing the street address.
@@ -19,8 +18,6 @@ class SmartyStreetsApi
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-
-  private_class_method
 
   # A private class method that sets up a connection to the SmartyStreets API using the Faraday gem.
   # Returns:
