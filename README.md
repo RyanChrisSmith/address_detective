@@ -38,7 +38,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 - Please note, any time `$` is in the command line prompt, that is to signify the beginning of a terminal command, do not include the `$` in the input
 - To install the necessary software to run a ruby program, please follow the sub points below:
   - To install a version manager such as `rbenv` to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
-  - Once a version manager is installed, install ruby using `$ rbenv install 2.7.4`
+  - Once a version manager is installed, install ruby using `$ rbenv install 3.1.2`
   - To install a bundler for the gems already in the file, run that by inputting `$ gem install bundler`
   - If the preference is all public methods' args and return types, there are some YARD files created to see just that.
     - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
@@ -88,7 +88,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 123 Long Street, City, ABCDE -> Invalid Address
 1234 Second Street, Big City, 1234567 -> 1234 Second Street, Schenectady, 12345-0001
 ```
-- Steps that aren't seeing behind the scenes:
+- Steps behind the scenes:
   - The program is reading from a static CSV file
   - Creating individual addresses out of each line
   - Sending that to a 3rd party API to verify the address
@@ -175,8 +175,8 @@ The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path"
 ## Extension Ideas
 </u>
 
-- Wrap error handling responses to help future proof
-- Bulk look up of addresses rather than 1 at a time (100 at a time)
+- Wrap error handling responses to future proof for version 2,3,etc.
+- Bulk look up of addresses rather than 1 at a time
 - Write a CSV file for output rather than just in command line
 - Handling other file types for initial input (pdf, json, yaml, xml)
 

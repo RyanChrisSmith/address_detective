@@ -14,6 +14,16 @@ RSpec.describe SmartyStreetsApi do
       expect(returned_address[0][:delivery_line_1]).to eq('143 E Main St')
       expect(returned_address[0][:last_line]).to eq('Columbus OH 43215-5370')
     end
+
+    describe '#conn' do
+      it 'is a private method' do
+        expect { SmartyStreetsApi.conn }.to raise_error(NoMethodError)
+      end
+
+      it 'is listed in private methods' do
+        expect(SmartyStreetsApi.private_methods).to include(:conn)
+      end
+    end
   end
 
   describe 'sad path' do

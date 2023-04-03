@@ -20,11 +20,10 @@ class SmartyStreetsApi
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-
   # A private class method that sets up a connection to the SmartyStreets API using the Faraday gem.
   # Returns:
   # - A Faraday connection object with the base url, authentication credentials, and candidate limit set.
-  def self.conn
+  private_class_method def self.conn
     Faraday.new(url: 'https://us-street.api.smartystreets.com') do |req|
       req.params['auth-id'] = ENV['SMARTY_AUTH_ID']
       req.params['auth-token'] = ENV['SMARTY_AUTH_TOKEN']
