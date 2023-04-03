@@ -23,8 +23,10 @@ class Runner
       corrected_address = ResponseAddress.new(response)
       puts "#{address.complete} -> #{corrected_address.full_response}"
     end
+  # Catch ArgumentError exceptions
   rescue ArgumentError => e
     puts "Error: #{e.message}"
+  # Catch all other StandardError exceptions
   rescue StandardError => e
     puts "Unexpected error: #{e.message}"
   end
