@@ -10,9 +10,9 @@ class CsvAddress
   # Initialize a CsvAddress instance with a street, city, and zip code.
   def initialize(street, city, zip_code)
     # Raise an ArgumentError if any of the arguments are empty.
-    raise ArgumentError, "street can't be blank" if street.strip.empty?
-    raise ArgumentError, "city can't be blank" if city.strip.empty?
-    raise ArgumentError, "zip code can't be blank" if zip_code.strip.empty?
+    raise ArgumentError, "street can't be blank" if street.nil? || street.strip.empty?
+    raise ArgumentError, "city can't be blank" if city.nil? || city.strip.empty?
+    raise ArgumentError, "zip code can't be blank" if zip_code.nil? || zip_code.strip.empty?
 
     # Set instance variables for street, city, and zip code (stripped of whitespace).
     @street = street.strip

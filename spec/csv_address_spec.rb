@@ -46,12 +46,16 @@ RSpec.describe CsvAddress do
     describe 'empty attributes' do
       it 'will return an argument error if any one of the attributes are empty' do
         expect { CsvAddress.new('', 'Columbus', '43215') }.to raise_error(ArgumentError, "street can't be blank")
-        expect do
-          CsvAddress.new('143 e Maine Street', '', '43215')
-        end.to raise_error(ArgumentError, "city can't be blank")
-        expect do
-          CsvAddress.new('143 e Maine Street', 'Columbus', '')
-        end.to raise_error(ArgumentError, "zip code can't be blank")
+        expect { CsvAddress.new('143 e Maine Street', '', '43215') }.to raise_error(ArgumentError, "city can't be blank")
+        expect { CsvAddress.new('143 e Maine Street', 'Columbus', '') }.to raise_error(ArgumentError, "zip code can't be blank")
+      end
+    end
+
+    describe 'attributes = nil' do
+      it 'will return an argument error if any one of the attributes are nil value' do
+        expect { CsvAddress.new(nil, 'Columbus', '43215') }.to raise_error(ArgumentError, "street can't be blank")
+        expect { CsvAddress.new('143 e Maine Street', nil, '43215') }.to raise_error(ArgumentError, "city can't be blank")
+        expect { CsvAddress.new('143 e Maine Street', 'Columbus', nil) }.to raise_error(ArgumentError, "zip code can't be blank")
       end
     end
   end
