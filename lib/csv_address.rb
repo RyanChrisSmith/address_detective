@@ -11,6 +11,7 @@ class CsvAddress
     raise ArgumentError, "street can't be blank" if street.strip.empty?
     raise ArgumentError, "city can't be blank" if city.strip.empty?
     raise ArgumentError, "zip code can't be blank" if zip_code.strip.empty?
+
     # Set instance variables for street, city, and zip code (stripped of whitespace).
     @street = street.strip
     @city = city.strip

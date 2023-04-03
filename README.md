@@ -19,8 +19,6 @@
 [Testing](#testing)<br>
 [Reasoning and Decision Making](#reasoning-and-decision-making)<br>
 [Gems](#gems)<br>
-[Usage](#usage)<br>
-[Features](#features)<br>
 [Testing](#testing)
 
 <u>
@@ -37,8 +35,8 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 ## Setup / Installation
 </u>
 
+- Please note, any time you see `$` that is to signify the beginning of a terminal command, do not include the `$` in your input
 - This project assumes that you already have the necessary software installed on your machine to run a ruby program, but if not follow the next sub points below:
-  - Please note, any time you see `$` that is to signify the beginning of a terminal command, do not include the `$`
   - If not, you will need to look into installing a version manager such as `rbenv` to allow you to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
   - Once a version manager is installed, install ruby using `$rbenv install 2.7.4`
   - You will need a bundler for the gems already in the file, run that by inputting `$gem install bundler`
@@ -56,6 +54,12 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   <img src="images/screenshot.png">
 
   - Make sure to label the keys exactly the same as in the screenshot `SMARTY_AUTH_ID` and `SMARTY_AUTH_TOKEN` so that the keys will work properly when the program is run
+  - ONE LAST THING BEFORE YOU GO ANYWHERE! We have to protect *YOUR* keys too! Make sure to add `.env` file to your `.gitignore` file like pictured below
+
+
+  <img src="images/screenshot-2.png">
+
+  - This way, your API keys will stay out of your commit history keeping them safe
 
 ### [Back to Table of Contents](#table-of-contents)
 
@@ -96,14 +100,21 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 ## Reasoning and Decision Making
 </u>
 
+This program is an example of how to use various programming concepts, libraries, and APIs to build a tool that validates and corrects addresses using the SmartyStreets API.
+
+At a high level, the program reads in a CSV file containing addresses, creates CsvAddress objects to represent each address, validates and corrects each address using the SmartyStreetsApi API, and outputs the corrected address in the console.
+
+The program is structured using object-oriented programming (OOP) principles. The CsvAddress class encapsulates the concept of an address, providing methods to access and format its data. The CsvReader class is responsible for reading a CSV file and creating CsvAddress objects from its data. The SmartyStreetsApi class handles making HTTP requests to the SmartyStreets API and parsing its responses into usable data. Finally, the ResponseAddress class encapsulates the concept of an address returned from the SmartyStreets API.
+
+The program also uses various libraries and APIs to accomplish its goals. The CSV library is used to read and parse the CSV file. The Faraday library is used to make HTTP requests to the SmartyStreets API. Finally, the dotenv gem is used to load environment variables containing the authentication credentials for the SmartyStreets API.
+
+Overall, this program demonstrates how to use OOP principles, libraries, and APIs to build a tool that solves a specific problem: validating and correcting addresses. By following the Single Responsibility Principle, the program is easier to understand, easier to maintain, and easier to modify. Plus, it helps to avoid the dreaded "spaghetti code" - code that's so intertwined and convoluted that it's hard to tell what's going on.
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>
 
-## Gems
+## Gems (Why these ones?)
 </u>
-
-_GEMS_
 
 [Bundler Audit](https://github.com/rubysec/bundler-audit) - used to scan a Ruby project's dependencies for known vulnerabilities and security issues
 
@@ -125,27 +136,32 @@ _GEMS_
 
 <u>
 
-## Usage
-</u>
-
-Instructions for using the project, including examples.
-
-### [Back to Table of Contents](#table-of-contents)
-<u>
-
-
-## Features
-</u>
-
-A list of the project's features.
-
-### [Back to Table of Contents](#table-of-contents)
-
-<u>
-
 ## Testing
 </u>
 
-Instructions for running tests, including any necessary setup.
+- _If you would like to run the test suite_
+  - Run `$bundle exec rspec` to execute the whole test suite
+
+- _If you would like to check the code for any known vulnerabilities_
+  - Run `$bundle audit check --update`
+  - Using the update flag makes sure that the gem is checking with the most recently known advisories and vulnerabilities
+
+- _There should be a fixtures folder within the spec folder_
+  - That is there courtesy of the VCR gem
+  - These are the recordings of the original API call that are then used in the subsequent times running the tests. This way, the actual API calls are limited after the test has been run the first time.
+  - There is a cassette tape for every test that has `:vcr` in its `it ' ' do ` block description
+
+- See below for a more specified explanation of each test file for each class
+
+
+The code is a set of RSpec tests to test classes CsvAddress, CsvReader, and ResponseAddress for validating and processing addresses.
+
+The CsvAddress class is tested to ensure that it is initialized with valid attributes (street, city, zip_code) and will create an object for each address from a CSV file, even if it has incomplete or whitespace values. It is also tested to return the complete address as a string and to raise an ArgumentError if any attributes are empty.
+
+The CsvReader class is tested to ensure that it can retrieve all addresses from a test CSV file and return them as CsvAddress objects with the correct values for each attribute.
+
+The ResponseAddress class is tested by sending a request to the SmartyStreets API to confirm an address, and then verifying that it returns the correct full response, street, city, and zip code attributes. It is also tested to return 'Invalid Address' if the csv address doesn't exist. The tests use a gem called VCR to record and replay HTTP interactions with the API.
+
+The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
 
 ### [Back to Table of Contents](#table-of-contents)

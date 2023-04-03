@@ -26,7 +26,7 @@ class SmartyStreetsApi
   # Returns:
   # - A Faraday connection object with the base url, authentication credentials, and candidate limit set.
   def self.conn
-    Faraday.new(url: "https://us-street.api.smartystreets.com") do |req|
+    Faraday.new(url: 'https://us-street.api.smartystreets.com') do |req|
       req.params['auth-id'] = ENV['SMARTY_AUTH_ID']
       req.params['auth-token'] = ENV['SMARTY_AUTH_TOKEN']
       req.params['candidates'] = '10'
