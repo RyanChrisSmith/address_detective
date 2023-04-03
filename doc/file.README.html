@@ -99,9 +99,16 @@ _ENVIRONMENT_
 </li><li>
 <p>To install a version manager such as <code>rbenv</code> to easily switch between <code>Ruby</code> versions <a href="https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos">rbenv tutorial</a></p>
 </li><li>
-<p>Once a version manager is installed, install ruby using <code>$rbenv install 2.7.4</code></p>
+<p>Once a version manager is installed, install ruby using <code>$ rbenv install 3.1.2</code></p>
 </li><li>
-<p>To install a bundler for the gems already in the file, run that by inputting <code>$gem install bundler</code></p>
+<p>To install a bundler for the gems already in the file, run that by inputting <code>$ gem install bundler</code></p>
+</li><li>
+<p>If the preference is all public methods’ args and return types, there are some YARD files created to see just that.</p>
+<ul><li>
+<p>In the terminal, run <code>$ yard server</code> and then go to url <code>http://localhost:8808/</code> in a browser window.</p>
+</li><li>
+<p>Feel free to click around on the different classes and see what each method in each class is doing</p>
+</li></ul>
 </li></ul>
 
 <p><em>Now you are ready to move forward with this repo!</em></p>
@@ -110,13 +117,13 @@ _ENVIRONMENT_
 </li><li>
 <p><code>$cd address_detective</code> into the repo</p>
 </li><li>
-<p>Run <code>$bundle install</code> to add all the gems</p>
+<p>Run <code>$ bundle install</code> to add all the gems</p>
 </li><li>
 <p>Well, well, well, it looks like we have a secret agent in our midst! There’s an API Key involved that’s so top-secret, it doesn’t even come with the repo! Gotta keep those classified files under lock and key, am I right?</p>
 </li><li>
 <p>Go to <code>https://www.smarty.com/products/us-address-verification</code> to get an <code>API key</code> and <code>Authorization token</code>, you will need this and once back I can direct you as to where they can go on your machine to stay safe and sound.</p>
 </li><li>
-<p>Create a file <code>$touch .env</code> which should create an empty <code>.env</code> file at the root level of the files</p>
+<p>Create a file <code>$ touch .env</code> which should create an empty <code>.env</code> file at the root level of the files</p>
 </li><li>
 <p>In that <code>.env</code> file add your keys as pictured below, but put the keys in the spaces that are scratched out.</p>
 </li></ul>
@@ -143,7 +150,7 @@ _ENVIRONMENT_
 <ul><li>
 <p>Once setup / installation is finished, it is time to run this beautiful program from your terminal</p>
 </li><li>
-<p>Run <code>$ruby runner.rb data/test_addresses.csv</code></p>
+<p>Run <code>$ ruby runner.rb data/test_addresses.csv</code></p>
 </li><li>
 <p>The response you should see in the terminal will look like this:</p>
 
@@ -161,7 +168,7 @@ _ENVIRONMENT_
 1234 Second Street, Big City, 1234567 -&gt; 1234 Second Street, Schenectady, 12345-0001
 </code></pre>
 </li><li>
-<p>Steps that aren’t seeing behind the scenes:</p>
+<p>Steps behind the scenes:</p>
 </li><li>
 <p>The program is reading from a static CSV file</p>
 </li><li>
@@ -229,13 +236,13 @@ _ENVIRONMENT_
 <ul><li>
 <p><em>If you would like to run the test suite</em></p>
 </li><li>
-<p>Run <code>$bundle exec rspec</code> to execute the whole test suite</p>
+<p>Run <code>$ bundle exec rspec</code> to execute the whole test suite</p>
 </li><li>
-<p>You will notice beyond the passing tests that <code>simplecov</code> is generating a Coverage Report. This helps to identify any code that was written is actually being tested. You can <code>$open coverage/index.html</code> to see a visual representation of what is being covered.</p>
+<p>You will notice beyond the passing tests that <code>simplecov</code> is generating a Coverage Report. This helps to identify any code that was written is actually being tested. You can <code>$ open coverage/index.html</code> to see a visual representation of what is being covered.</p>
 </li><li>
 <p><em>If you would like to check the code for any known vulnerabilities</em></p>
 </li><li>
-<p>Run <code>$bundle audit check --update</code></p>
+<p>Run <code>$ bundle audit check --update</code></p>
 </li><li>
 <p>Using the update flag makes sure that the gem is checking with the most recently known advisories and vulnerabilities</p>
 </li><li>
@@ -268,9 +275,9 @@ _ENVIRONMENT_
 
 <p>&lt;/u&gt;</p>
 <ul><li>
-<p>Wrap error handling responses to help future proof</p>
+<p>Wrap error handling responses to future proof for version 2,3,etc.</p>
 </li><li>
-<p>Bulk look up of addresses rather than 1 at a time (100 at a time)</p>
+<p>Bulk look up of addresses rather than 1 at a time</p>
 </li><li>
 <p>Write a CSV file for output rather than just in command line</p>
 </li><li>
@@ -279,7 +286,7 @@ _ENVIRONMENT_
 </div></div>
 
       <div id="footer">
-  Generated on Mon Apr  3 13:37:37 2023 by
+  Generated on Mon Apr  3 14:40:56 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

@@ -235,7 +235,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return a string representation of the CsvAddress in the format “street, city, zip_code”.</p>
+<p>Returns a string representation of the CsvAddress in the format “street, city, zip_code”.</p>
 </div></span>
   
 </li>
@@ -267,6 +267,30 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_presence_of_arg-instance_method" title="#validate_presence_of_arg (instance method)">#<strong>validate_presence_of_arg</strong>(arg, name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Raises an ArgumentError if arg is empty or nil.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -285,26 +309,13 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Initialize a CsvAddress instance with a street, city, and zip code.</p>
+<p>Initialize a CsvAddress instance with a street, city, and zip code. This method validates that the provided arguments are not empty or nil, and sets instance variables for street, city, and zip code (stripped of whitespace).</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -320,21 +331,17 @@
 16
 17
 18
-19
-20
-21</pre>
+19</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_street'>street</span><span class='comma'>,</span> <span class='id identifier rubyid_city'>city</span><span class='comma'>,</span> <span class='id identifier rubyid_zip_code'>zip_code</span><span class='rparen'>)</span>
-  <span class='comment'># Raise an ArgumentError if any of the arguments are empty.
-</span>  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>street can&#39;t be blank</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_street'>street</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>city can&#39;t be blank</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_city'>city</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>zip code can&#39;t be blank</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_zip_code'>zip_code</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_validate_presence_of_arg'>validate_presence_of_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_street'>street</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>street</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_presence_of_arg'>validate_presence_of_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_city'>city</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>city</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_presence_of_arg'>validate_presence_of_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_zip_code'>zip_code</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>zip code</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='comment'># Set instance variables for street, city, and zip code (stripped of whitespace).
-</span>  <span class='ivar'>@street</span> <span class='op'>=</span> <span class='id identifier rubyid_street'>street</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
+  <span class='ivar'>@street</span> <span class='op'>=</span> <span class='id identifier rubyid_street'>street</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
   <span class='ivar'>@city</span> <span class='op'>=</span> <span class='id identifier rubyid_city'>city</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
   <span class='ivar'>@zip_code</span> <span class='op'>=</span> <span class='id identifier rubyid_zip_code'>zip_code</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
 <span class='kw'>end</span></pre>
@@ -376,12 +383,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+4
+5
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_city'>city</span>
   <span class='ivar'>@city</span>
@@ -419,12 +426,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+4
+5
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_street'>street</span>
   <span class='ivar'>@street</span>
@@ -462,12 +469,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+4
+5
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_zip_code'>zip_code</span>
   <span class='ivar'>@zip_code</span>
@@ -496,7 +503,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Return a string representation of the CsvAddress in the format “street, city, zip_code”.</p>
+<p>Returns a string representation of the CsvAddress in the format “street, city, zip_code”.</p>
 
 
   </div>
@@ -510,15 +517,69 @@
       <pre class="lines">
 
 
-24
-25
-26</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_complete'>complete</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_street'>street</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_city'>city</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_zip_code'>zip_code</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate_presence_of_arg-instance_method">
+  
+    #<strong>validate_presence_of_arg</strong>(arg, name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Raises an ArgumentError if arg is empty or nil. Helper method to DRY up code</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/csv_address.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate_presence_of_arg'>validate_presence_of_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> can&#39;t be blank</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -530,7 +591,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr  3 13:37:37 2023 by
+  Generated on Mon Apr  3 14:40:56 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

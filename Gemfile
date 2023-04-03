@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 
 # This gem is used for making HTTP requests in Ruby.
 gem 'faraday'
+gem 'yard'
 
 # These gems are used only in development environments.
 group :development do
