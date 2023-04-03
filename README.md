@@ -166,3 +166,14 @@ The ResponseAddress class is tested by sending a request to the SmartyStreets AP
 The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
 
 ### [Back to Table of Contents](#table-of-contents)
+
+<u>
+
+## Extension Ideas
+</u>
+
+- Wrap error handling responses to help future proof
+- Bulk look up of addresses rather than 1 at a time (100 at a time)
+- Write a CSV file for output rather than just in command line
+- Handling other file types for initial input (pdf, json, yaml, xml)
+
