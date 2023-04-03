@@ -47,7 +47,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   _Now you are ready to move forward with this repo!_
 
 - Clone this Git repository to your local machine [here](https://github.com/RyanChrisSmith/address_detective)
-- `$cd address_detective` into the repo
+- `$ cd address_detective` into the repo
 - Run `$ bundle install` to add all the gems
 - Well, well, well, it looks like we have a secret agent in our midst! There's an API Key involved that's so top-secret, it doesn't even come with the repo! Gotta keep those classified files under lock and key, am I right?
   - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once back I can direct you as to where they can go on your machine to stay safe and sound.
