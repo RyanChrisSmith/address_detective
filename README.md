@@ -179,4 +179,5 @@ The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path"
 - Bulk look up of addresses rather than 1 at a time
 - Write a CSV file for output rather than just in command line
 - Handling other file types for initial input (pdf, json, yaml, xml)
+- Error handling for input file issues (wrong headers, no commas, too many commas, weird encoding, strange characters, extra comma(s) in street attribute)
 
