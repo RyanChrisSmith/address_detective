@@ -69,9 +69,9 @@ RSpec.describe SmartyStreetsApi do
       end
 
       it 'handles 429 Too Many Requests error' do
-        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Payment Required'))
+        allow(SmartyStreetsApi).to receive(:confirm_address).and_raise(Faraday::ClientError.new('Too Many Requests'))
 
-        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Payment Required')
+        expect { SmartyStreetsApi.confirm_address('123 Main St', 'Anytown', '12345') }.to raise_error(Faraday::ClientError, 'Too Many Requests')
       end
 
       it 'handles a 500 server error' do
