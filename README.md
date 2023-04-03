@@ -141,6 +141,7 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
 
 - _If you would like to run the test suite_
   - Run `$bundle exec rspec` to execute the whole test suite
+  - You will notice beyond the passing tests that `spec_helper` is generating a Coverage Report. This helps to identify any code that was written is actually being tested. You can `$open coverage/index.html` to see a visual representation of what is being covered.
 
 - _If you would like to check the code for any known vulnerabilities_
   - Run `$bundle audit check --update`
