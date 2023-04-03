@@ -40,8 +40,9 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   - To install a version manager such as `rbenv` to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
   - Once a version manager is installed, install ruby using `$ rbenv install 2.7.4`
   - To install a bundler for the gems already in the file, run that by inputting `$ gem install bundler`
-  - If the preference is to view this README in a more documentation style manner without the formatting, there are some YARD files created to do just that.
+  - If the preference is all public methods' args and return types, there are some YARD files created to see just that.
     - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
+    - Feel free to click around on the different classes and see what each method in each class is doing
 
   _Now you are ready to move forward with this repo!_
 
