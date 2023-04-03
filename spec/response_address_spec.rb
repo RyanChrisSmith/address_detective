@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require './lib/response_address'
 require './lib/smarty_streets_api'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ResponseAddress represents an address returned from a third-party API.
 class ResponseAddress
   # Initialize with all current and potential future attributes by using a method for addition of new ones.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'vcr'
 require './lib/smarty_streets_api'

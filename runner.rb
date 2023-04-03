@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/csv_reader'
 require './lib/csv_address'
 require './lib/response_address'

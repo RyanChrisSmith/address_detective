@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This line specifies that the gems should be downloaded from the official RubyGems repository.
 source 'https://rubygems.org'
 
