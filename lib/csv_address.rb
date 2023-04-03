@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # CsvAddress represents an address in a CSV file.
 class CsvAddress
   # Create reader methods for the street, city, and zip_code attributes.

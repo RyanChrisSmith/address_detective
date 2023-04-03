@@ -7,7 +7,7 @@ require './lib/csv_address'
 RSpec.describe CsvReader do
   describe 'CSV reader pulling info from the CSV file' do
     it 'will retrieve all addresses from the test CSV file' do
-      reader = CsvReader.new
+      reader = described_class.new
       addresses = reader.read('./data/test_addresses.csv')
       expected_count = CSV.read('./data/test_addresses.csv').count - 1
 
@@ -15,7 +15,7 @@ RSpec.describe CsvReader do
     end
 
     it 'will return the addresses as Address objects' do
-      reader = CsvReader.new
+      reader = described_class.new
       csv_addresses = reader.read('./data/test_addresses.csv')
 
       expect(csv_addresses.first).to be_a CsvAddress
@@ -23,7 +23,7 @@ RSpec.describe CsvReader do
     end
 
     it 'will set the CsvAddress attributes to the correct values' do
-      reader = CsvReader.new
+      reader = described_class.new
       csv_addresses = reader.read('./data/test_addresses.csv')
 
       expect(csv_addresses.first.street).to eq '143 e Maine Street'
