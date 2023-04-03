@@ -55,6 +55,9 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
+    rubocop-performance (1.15.1)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rspec (2.13.2)
       rubocop (~> 1.33)
     ruby-progressbar (1.13.0)
@@ -87,6 +90,7 @@ DEPENDENCIES
   pry
   rspec
   rubocop
+  rubocop-performance
   rubocop-rspec
   simplecov
   vcr
