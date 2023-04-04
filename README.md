@@ -59,7 +59,6 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   - If the preference is to see the documentation for all public methods' args and return types, there are some YARD documentation created to see just that. See explanation of gems used [below](#gems-why-these-ones) or go to the [yard gem page](https://github.com/lsegal/yard)
     - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
     - Feel free to click around on the different classes and see what each method in each class is doing
-
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>
