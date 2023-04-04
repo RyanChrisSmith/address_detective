@@ -148,7 +148,7 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
 - _There should be a fixtures folder within the spec folder_
   - That is there courtesy of the VCR gem
   - These are the recordings of the original API call that are then used in the subsequent times running the tests. This way, the actual API calls are limited after the test has been run the first time.
-  - There is a cassette tape for every test that has `:vcr` in its `it ' ' do ` block description
+  - There is a cassette tape for every test that has `:vcr` in its `it` block description
 
 - See below for a more specified explanation of each test file for each class
 
@@ -170,7 +170,7 @@ The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path"
 ## Extension Ideas
 </u>
 
-- Wrap error handling responses to future proof for version 2,3,etc.
+- Wrap error handling for third party API responses to future proof for versions 2 and beyond
 - Bulk look up of addresses rather than 1 at a time
 - Write a CSV file for output rather than just in command line
 - Handling other file types for initial input (pdf, json, yaml, xml)
