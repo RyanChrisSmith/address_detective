@@ -1,4 +1,4 @@
-lib/csv_reader.rb 4fb8bb425ebfc2a9e0c35b55661f5e1b4d4a7352
-lib/csv_address.rb 936207925a6f752e6a1309806c510baf7d0e91fa
+lib/csv_reader.rb e75044835470c6e1206efe2d6e530b4493218bf7
+lib/csv_address.rb edcd78c6a56b93eaff324bb77626186ac51f8364
 lib/response_address.rb 031890c04016d1b46959605e22153f51eda9a7b8
 lib/smarty_streets_api.rb 33b29f0d2ee82851cf664ac7378ce74a9b5ddd5a

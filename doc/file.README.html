@@ -61,11 +61,6 @@
 
 # *Address Detective*
 
-<div style="max-width: 1000px; max-height: 30px;">
-  <img src="images/detective-3.jpg" alt="your_image_alt_text" style="width: 100%; height: 100%">
-</div>
-
-
 ### _Transform your command-line into a Sherlock Holmes of sorts, capable of solving the mystery of any US address! Build a program that harnesses the power of an API to validate the authenticity of a US address, revealing its true identity or boldly declaring it 'Invalid'. Get ready to don your detective cap and solve the case of the US Address!_
 
 <u>
@@ -115,7 +110,7 @@ _ENVIRONMENT_
 <ul><li>
 <p>Clone this Git repository to your local machine <a href="https://github.com/RyanChrisSmith/address_detective">here</a></p>
 </li><li>
-<p><code>$cd address_detective</code> into the repo</p>
+<p><code>$ cd address_detective</code> into the repo</p>
 </li><li>
 <p>Run <code>$ bundle install</code> to add all the gems</p>
 </li><li>
@@ -252,7 +247,7 @@ _ENVIRONMENT_
 </li><li>
 <p>These are the recordings of the original API call that are then used in the subsequent times running the tests. This way, the actual API calls are limited after the test has been run the first time.</p>
 </li><li>
-<p>There is a cassette tape for every test that has <code>:vcr</code> in its <code>it &#39; &#39; do</code> block description</p>
+<p>There is a cassette tape for every test that has <code>:vcr</code> in its <code>it</code> block description</p>
 </li><li>
 <p>See below for a more specified explanation of each test file for each class</p>
 </li></ul>
@@ -275,18 +270,20 @@ _ENVIRONMENT_
 
 <p>&lt;/u&gt;</p>
 <ul><li>
-<p>Wrap error handling responses to future proof for version 2,3,etc.</p>
+<p>Wrap error handling for third party API responses to future proof for versions 2 and beyond</p>
 </li><li>
 <p>Bulk look up of addresses rather than 1 at a time</p>
 </li><li>
 <p>Write a CSV file for output rather than just in command line</p>
 </li><li>
 <p>Handling other file types for initial input (pdf, json, yaml, xml)</p>
+</li><li>
+<p>Error handling for input file issues (wrong headers, no commas, too many commas, weird encoding, strange characters, extra comma(s) in street attribute)</p>
 </li></ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Apr  3 14:40:56 2023 by
+  Generated on Tue Apr  4 09:40:29 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
