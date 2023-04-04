@@ -20,6 +20,14 @@ class SmartyStreetsApi
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def self.bulk_addresses(addresses)
+    response = conn.post('/street-address?') do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = addresses.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
   # A private class method that sets up a connection to the SmartyStreets API using the Faraday gem.
   # Returns:
   # - A Faraday connection object with the base url, authentication credentials, and candidate limit set.

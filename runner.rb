@@ -11,7 +11,7 @@ class Runner
     csv_file_path = ARGV[0]
 
     # Validate CSV file path
-    raise ArgumentError, "CSV file path is required" if csv_file_path.nil? || csv_file_path.strip.empty?
+    raise ArgumentError, 'CSV file path is required' if csv_file_path.nil? || csv_file_path.strip.empty?
 
     # Read in the CSV file
     csv_reader = CsvReader.new
@@ -31,4 +31,3 @@ class Runner
     puts "Unexpected error: #{e.message}"
   end
 end
-

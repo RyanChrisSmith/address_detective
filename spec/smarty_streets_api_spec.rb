@@ -24,6 +24,116 @@ RSpec.describe SmartyStreetsApi do
         expect(described_class.private_methods).to include(:conn)
       end
     end
+
+    describe '#bulk_addresses' do
+      it 'will check on up to 100 addresses or 32k in one API call', :vcr do
+        addresses = [
+          {
+            "street": '1 Santa Claus',
+            "city": 'North Pole',
+            "zipcode": '99705'
+          },
+          {
+            "street": '1 infinite loop',
+            "city": 'cupertino',
+            "zipcode": '95014'
+          }
+        ]
+        expected_response = [
+          {
+            "input_index": 0,
+            "candidate_index": 0,
+            "delivery_line_1": '1 Santa Claus Ln',
+            "last_line": 'North Pole AK 99705-9901',
+            "delivery_point_barcode": '997059901010',
+            "components": {
+              "primary_number": '1',
+              "street_name": 'Santa Claus',
+              "street_suffix": 'Ln',
+              "city_name": 'North Pole',
+              "default_city_name": 'North Pole',
+              "state_abbreviation": 'AK',
+              "zipcode": '99705',
+              "plus4_code": '9901',
+              "delivery_point": '01',
+              "delivery_point_check_digit": '0'
+            },
+            "metadata": {
+              "record_type": 'S',
+              "zip_type": 'Standard',
+              "county_fips": '02090',
+              "county_name": 'Fairbanks North Star',
+              "carrier_route": 'C004',
+              "congressional_district": 'AL',
+              "rdi": 'Commercial',
+              "elot_sequence": '0001',
+              "elot_sort": 'A',
+              "latitude": 64.752140,
+              "longitude": -147.353000,
+              "precision": 'Zip9',
+              "time_zone": 'Alaska',
+              "utc_offset": -9,
+              "dst": true
+            },
+            "analysis": {
+              "dpv_match_code": 'Y',
+              "dpv_footnotes": 'AABB',
+              "dpv_cmra": 'N',
+              "dpv_vacant": 'N',
+              "dpv_no_stat": 'Y',
+              "active": 'Y',
+              "footnotes": 'L#'
+            }
+          },
+          {
+            "input_index": 1,
+            "candidate_index": 0,
+            "delivery_line_1": '1 Infinite Loop',
+            "last_line": 'Cupertino CA 95014-2083',
+            "delivery_point_barcode": '950142083017',
+            "components": {
+              "primary_number": '1',
+              "street_name": 'Infinite',
+              "street_suffix": 'Loop',
+              "city_name": 'Cupertino',
+              "default_city_name": 'Cupertino',
+              "state_abbreviation": 'CA',
+              "zipcode": '95014',
+              "plus4_code": '2083',
+              "delivery_point": '01',
+              "delivery_point_check_digit": '7'
+            },
+            "metadata": {
+              "record_type": 'S',
+              "zip_type": 'Standard',
+              "county_fips": '06085',
+              "county_name": 'Santa Clara',
+              "carrier_route": 'C067',
+              "congressional_district": '17',
+              "rdi": 'Commercial',
+              "elot_sequence": '0037',
+              "elot_sort": 'A',
+              "latitude": 37.333100,
+              "longitude": -122.028890,
+              "precision": 'Zip9',
+              "time_zone": 'Pacific',
+              "utc_offset": -8,
+              "dst": true
+            },
+            "analysis": {
+              "dpv_match_code": 'Y',
+              "dpv_footnotes": 'AABB',
+              "dpv_cmra": 'N',
+              "dpv_vacant": 'N',
+              "dpv_no_stat": 'N',
+              "active": 'Y'
+            }
+          }
+        ]
+
+        expect(SmartyStreetsApi.bulk_addresses(addresses)).to eq(expected_response)
+      end
+    end
   end
 
   describe 'sad path' do
