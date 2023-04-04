@@ -35,9 +35,6 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   - To install a version manager such as `rbenv` to easily switch between `Ruby` versions [rbenv tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos)
   - Once a version manager is installed, install ruby using `$ rbenv install 3.1.2`
   - To install a bundler for the gems already in the file, run that by inputting `$ gem install bundler`
-  - If the preference is all public methods' args and return types, there are some YARD files created to see just that.
-    - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
-    - Feel free to click around on the different classes and see what each method in each class is doing
 
   _Now you are ready to move forward with this repo!_
 
@@ -58,6 +55,10 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   <img src="images/screenshot-2.png">
 
   - This way, the API keys will stay out of the commit history keeping them safe from prying eyes
+
+  - If the preference is to see the documentation for all public methods' args and return types, there are some YARD documentation created to see just that. See explanation of gems used [below](#gems-why-these-ones) or go to the [yard gem page](https://github.com/lsegal/yard)
+    - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
+    - Feel free to click around on the different classes and see what each method in each class is doing
 
 ### [Back to Table of Contents](#table-of-contents)
 
@@ -129,6 +130,8 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
 [VCR](https://github.com/vcr/vcr) - provides a way to record and replay HTTP interactions between a Ruby application and an external API. This gem depends on WebMock (next gem) to intercept HTTP requests and responses, and provide the necessary stubbing and recording capabilities.
 
 [WebMock](https://github.com/bblimke/webmock) - provides a way to stub HTTP requests and responses in Ruby tests
+
+[Yard](https://github.com/lsegal/yard) - documentation generation tool for Ruby code that simplifies the process of creating high-quality API documentation.
 
 ### [Back to Table of Contents](#table-of-contents)
 

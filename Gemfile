@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 
 # This gem is used for making HTTP requests in Ruby.
 gem 'faraday'
-gem 'rubocop-performance'
+# A documentation generation tool for Ruby code that simplifies the process of creating high-quality API documentation.
 gem 'yard'
 
 # These gems are used only in development environments.
