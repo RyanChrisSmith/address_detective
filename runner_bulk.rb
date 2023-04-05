@@ -2,7 +2,7 @@
 
 require './lib/csv_reader'
 require './lib/csv_address'
-require './lib/response_bulk_address'
+require './lib/response_converter'
 require './lib/smarty_streets_api'
 
 class RunnerBulk  # Defines a class called RunnerBulk.
@@ -19,14 +19,14 @@ class RunnerBulk  # Defines a class called RunnerBulk.
   # Calls the SmartyStreetsApi to validate the addresses.
   response = SmartyStreetsApi.bulk_addresses(formatted_addresses)
   # Parses the response to create a list of corrected addresses.
-  corrected_addresses = ResponseBulkAddress.create_list(response)
+  corrected_addresses = ResponseConverter.bulk(response)
 
   # Loops through the original addresses and prints out the corrected addresses (if valid) or "Invalid Address" (if invalid).
   addresses.each_with_index do |address, index|
     corrected_address = corrected_addresses.find { |c| c.index == index }
 
     if corrected_address
-      puts "#{address.complete} -> #{corrected_address.complete}"
+      puts "#{address.complete} -> #{corrected_address.validated}"
     else
       puts "#{address.complete} -> Invalid Address"
     end
