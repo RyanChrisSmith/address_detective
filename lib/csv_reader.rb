@@ -15,5 +15,3 @@ class CsvReader
        .map { |row| CsvAddress.new(row['street'], row['city'], row['zip code']) }
   end
 end
-
-

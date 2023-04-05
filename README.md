@@ -91,6 +91,17 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
     - If it is valid it is giving you the official address with appropriate corrections
   - Then showing that response after the lamda or `->` with either the *corrected address* or `Invalid Address`
 
+## ***EXTENSION***
+
+  - *The API allows for bulk address looks ups beyond the single address method*
+    - *This does require some adjustments on where information is passed in the API call, such as headers and in the body, so pay close attention to the difference in the way the code is written*
+  - *This program will allow for that in the same command line you just did, but with a much larger file*
+  - *Run `$ ruby runner_bulk.rb data/test_bulk_addresses.csv`*
+  - *This allows for 100 addresses OR 32k worth of data to be requested in one call! Awesome!*
+  - *The results will look quite similar to the single address look up from above, but the list will be much longer (to save space, that was not added on this README)*
+
+
+
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>
@@ -165,6 +176,10 @@ The ResponseAddress class is tested by sending a request to the SmartyStreets AP
 
 The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
 
+**EXTENSION TESTING**
+The ResponseBulkAddress first test verifies that an array of correct ResponseBulkAddress objects is returned after a bulk API call. The second test verifies that each instance of ResponseBulkAddress has the correct instance variables. The third test verifies that if an address does not exist, no data is returned at the index point of that address in the original array. The final test checks that the complete method of ResponseBulkAddress returns the full address in one string.
+
+Unlike the single address check used previously, the API does not return anything when the address is "Invalid" when checking in bulk. A check was created in the runner_bulk file to compare index values of the initial request to the response values, if there was a missing index in the return that indicated that it was invalid thus indicating an 'Invalid Address'
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>
@@ -173,7 +188,6 @@ The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path"
 </u>
 
 - Wrap error handling for third party API responses to future proof for versions 2 and beyond
-- Bulk look up of addresses rather than 1 at a time
 - Write a CSV file for output rather than just in command line
 - Handling other file types for initial input (pdf, json, yaml, xml)
 - Error handling for input file issues (wrong headers, no commas, too many commas, weird encoding, strange characters, extra comma(s) in street attribute)

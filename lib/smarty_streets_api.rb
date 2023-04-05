@@ -20,6 +20,20 @@ class SmartyStreetsApi
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  # **EXTENSION**
+  # A public class method that makes a request to the SmartyStreets API to confirm the validity of multiple addresses in bulk.
+  # Params:
+  # - addresses: an array of hashes, with each hash representing an address containing keys :street, :city, and :zip_code.
+  # Returns:
+  # - A hash containing the response from the SmartyStreets API.
+  def self.bulk_addresses(addresses)
+    response = conn.post('/street-address?') do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = addresses.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
   # A private class method that sets up a connection to the SmartyStreets API using the Faraday gem.
   # Returns:
   # - A Faraday connection object with the base url, authentication credentials, and candidate limit set.

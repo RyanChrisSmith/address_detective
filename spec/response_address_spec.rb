@@ -5,7 +5,7 @@ require './lib/response_address'
 require './lib/smarty_streets_api'
 
 RSpec.describe ResponseAddress do
-  describe 'response of good and bad addresses from API' do
+  describe 'response addresses from API' do
     it 'will return a proper address when a good csv address is sent out', :vcr do
       returned_address = SmartyStreetsApi.confirm_address('143 e Maine Street', 'Columbus', '43215')
       verified = described_class.new(returned_address)
