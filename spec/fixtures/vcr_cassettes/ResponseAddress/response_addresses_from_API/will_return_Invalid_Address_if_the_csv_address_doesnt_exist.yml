@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://us-street.api.smartystreets.com/street-address?auth-id=3ed7011c-b167-7ccb-ea71-32c2c2d11d67&auth-token=WCuTlMuvQ77fG5lu9jlC&candidates=10&city=Title&street=1%20Empora%20St&zipcode=11111
+    uri: https://us-street.api.smartystreets.com/street-address?auth-id=27c4e6c2-b852-767e-f89e-3d61a1310191&auth-token=eJRU0vxl16da3brBQIZ8&candidates=10&city=Title&street=1%20Empora%20St&zipcode=11111
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 05 Apr 2023 15:26:32 GMT
+      - Wed, 05 Apr 2023 19:05:29 GMT
       Transfer-Encoding:
       - chunked
       Vary:
@@ -29,5 +29,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-  recorded_at: Wed, 05 Apr 2023 15:26:32 GMT
+  recorded_at: Wed, 05 Apr 2023 19:05:29 GMT
 recorded_with: VCR 6.1.0
