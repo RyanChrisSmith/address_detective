@@ -14,7 +14,7 @@ class RunnerBulk  # Defines a class called RunnerBulk.
   addresses = csv_reader.read(csv_file_path)
 
   # Formats the addresses read from the CSV file as a list of hashes with "street", "city", and "zipcode" keys.
-  formatted_addresses = addresses.collect { |add| { "street" => add.street, "city" => add.city, "zipcode" => add.zip_code } }
+  formatted_addresses = addresses.collect { |address| { "street" => address.street, "city" => address.city, "zipcode" => address.zip_code } }
 
   # Calls the SmartyStreetsApi to validate the addresses.
   response = SmartyStreetsApi.bulk_addresses(formatted_addresses)
