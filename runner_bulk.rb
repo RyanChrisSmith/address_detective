@@ -26,7 +26,7 @@ class RunnerBulk  # Defines a class called RunnerBulk.
     corrected_address = corrected_addresses.find { |c| c.index == index }
 
     if corrected_address
-      puts "#{address.complete} -> #{corrected_address.complete}"
+      puts "#{address.complete} -> #{corrected_address.full_response}"
     else
       puts "#{address.complete} -> Invalid Address"
     end

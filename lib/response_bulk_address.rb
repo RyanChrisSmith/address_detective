@@ -1,5 +1,9 @@
+require_relative 'address_accessor'
 # This class represents a single address returned in the response from a bulk address API call.
 class ResponseBulkAddress
+  # DRY up code using a module for instance methods shared between this class and ResponseAddress class
+  include AddressAccessor
+
   attr_reader :index,         # Index of the input address that corresponds to this response address
               :street,        # Street address line for this response address
               :city,          # City for this response address
@@ -28,7 +32,8 @@ class ResponseBulkAddress
     end
   end
 
-  def complete
+  # override the #full_response method inherited from the module
+  def full_response
     "#{street}, #{city}, #{zip}-#{plus4_code}"
   end
 end
