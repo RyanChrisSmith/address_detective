@@ -21,6 +21,12 @@ class SmartyStreetsApi
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  # **EXTENSION**
+  # A public class method that makes a request to the SmartyStreets API to confirm the validity of multiple addresses in bulk.
+  # Params:
+  # - addresses: an array of hashes, with each hash representing an address containing keys :street, :city, and :zip_code.
+  # Returns:
+  # - A hash containing the response from the SmartyStreets API.
   def self.bulk_addresses(addresses)
     response = conn.post('/street-address?') do |req|
       req.headers['Content-Type'] = 'application/json'
