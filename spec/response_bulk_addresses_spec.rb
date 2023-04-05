@@ -100,5 +100,12 @@ RSpec.describe ResponseBulkAddress do
       expect(final_results.any? { |result| result.index == 1}).to eq true
       expect(final_results.any? { |result| result.index == 3}).to eq true
     end
+
+    describe '#complete' do
+      it 'will return the full address in one string' do
+        address = ResponseBulkAddress.new(0, "123 Main St", "Anytown", "12345", "6789")
+        expect(address.complete).to eq("123 Main St, Anytown, 12345-6789")
+      end
+    end
   end
 end
