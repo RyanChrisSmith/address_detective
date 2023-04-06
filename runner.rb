@@ -2,7 +2,7 @@
 
 require './lib/csv_reader'
 require './lib/csv_address'
-require './lib/response_address'
+require './lib/response_converter'
 require './lib/smarty_streets_api'
 
 class Runner
@@ -20,8 +20,12 @@ class Runner
     # Validate each address using the SmartyStreets API
     addresses.each do |address|
       response = SmartyStreetsApi.confirm_address(address.street, address.city, address.zip_code)
-      corrected_address = ResponseAddress.new(response)
-      puts "#{address.complete} -> #{corrected_address.full_response}"
+      corrected_address = ResponseConverter.single(response)
+      if corrected_address
+        puts "#{address.complete} -> #{corrected_address.validated}"
+      else
+        puts "#{address.complete} -> Invalid Address"
+      end
     end
   # Catch ArgumentError exceptions
   rescue ArgumentError => e
