@@ -106,7 +106,8 @@ VCR.configure do |config|
   end
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
-  config.filter_sensitive_data('<API Key>') { ENV['name_api_key'] } # name_api_key from config/application.yml
+  config.filter_sensitive_data('<API Key>') { ENV['SMARTY_AUTH_ID'] } # name_api_key from config/application.yml
+  config.filter_sensitive_data('<API Token>') { ENV['SMARTY_AUTH_TOKEN'] } # name_api_key from config/application.yml
   config.configure_rspec_metadata!
   config.allow_http_connections_when_no_cassette = true
 end
