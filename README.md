@@ -175,9 +175,12 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
   - Using the update flag makes sure that the gem is checking with the most recently known advisories and vulnerabilities
 
 - _There should be a fixtures folder within the spec folder_
+  - After running `bundle exec rspec` you may have noticed a new folder pop up under the `spec` folder
   - That is there courtesy of the VCR gem
   - These are the recordings of the original API call that are then used in the subsequent times running the tests. This way, the actual API calls are limited after the test has been run the first time.
   - There is a cassette tape for every test that has `:vcr` in its `it` block description
+  - The API key and token that are used in the call are hidden, but to be doubly sure this file is also added to the .gitignore so it isnt public
+    - The configuration for the VCR cassette tapes is in the `spec_helper` file at the bottom if you are curious
 
 - See below for a more specified explanation of each test file for each class
 
@@ -192,8 +195,6 @@ The code is a set of RSpec tests to test classes CsvAddress, CsvReader, and Resp
 - _The ResponseConverter class_ is tested to make sure it converts response data from the SmartyStreets API into a standardized format. The program contains a single test for the '.bulk' method in the 'ResponseConverter' class. The test includes sample data for three address candidates with various data points such as delivery line, last line, components, metadata, and analysis. The test case validates that the method can properly parse and format the given data.
 
 - _The SmartyStreetsApi_ tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
-
-**EXTENSION TESTING**
 
 ### [Back to Table of Contents](#table-of-contents)
 
