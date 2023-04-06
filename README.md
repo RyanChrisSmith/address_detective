@@ -99,6 +99,7 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
   - *Run `$ ruby runner_bulk.rb data/test_bulk_addresses.csv`*
   - *This allows for 100 addresses OR 32k worth of data to be requested in one call! Awesome!*
   - *The results will look quite similar to the single address look up from above, but the list will be much longer (to save space, that was not added on this README)*
+  - *Keep in mind this will use the same amount of API calls that it would if you went address by address, but was built for speed and convenience*
 
 
 
@@ -111,11 +112,24 @@ This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for
 
 This program is an example of how to use various programming concepts, libraries, and APIs to build a tool that validates and corrects addresses using the SmartyStreets API.
 
-At a high level, the program reads in a CSV file containing addresses, creates CsvAddress objects to represent each address, validates and corrects each address using the SmartyStreetsApi API, and outputs the corrected address in the console.
+At a high level, the program reads in a CSV file containing addresses, creates CsvAddress objects to represent each address, validates and corrects each address using the SmartyStreetsApi API, and outputs the corrected address via the ResponseConverter in the console.
 
-The program is structured using object-oriented programming (OOP) principles. The CsvAddress class encapsulates the concept of an address, providing methods to access and format its data. The CsvReader class is responsible for reading a CSV file and creating CsvAddress objects from its data. The SmartyStreetsApi class handles making HTTP requests to the SmartyStreets API and parsing its responses into usable data. Finally, the ResponseAddress class encapsulates the concept of an address returned from the SmartyStreets API.
+The code provided includes five classes, each with its own responsibility. Here is an overview of each class alphabetically and its design decisions:
 
-The program also uses various libraries and APIs to accomplish its goals. The CSV library is used to read and parse the CSV file. The Faraday library is used to make HTTP requests to the SmartyStreets API. Finally, the dotenv gem is used to load environment variables containing the authentication credentials for the SmartyStreets API.
+- ApiAddress class - This class represents an address returned from a third-party API. It has five attributes: street, city, zip, plus4_code, and index. The street, city, zip, and plus4_code are required attributes, and the index is an optional attribute. The class has an initializer that accepts the required attributes as arguments and sets them as instance variables. The initializer also sets the index attribute to nil if it is not provided. The validated method returns the full address as a string in the format "street, city, zip-code plus4-code". The design decision here is to have a separate class to represent an address returned from the API. This class encapsulates the data returned from the API and provides a way to access and validate that data.
+
+- CsvAddress class - This class represents an address in a CSV file. It has three attributes: street, city, and zip_code. The street, city, and zip_code are required attributes, and the class has an initializer that accepts these attributes as arguments. The initializer validates that the arguments are not empty or nil, sets them as instance variables after stripping whitespace, and raises an ArgumentError if any of them are blank. The complete method returns the full address as a string in the format "street, city, zip_code". The design decision here is to have a separate class to represent an address in a CSV file. This class encapsulates the data from the CSV file and provides a way to validate and format the data.
+
+- CsvReader class - This class reads addresses from a CSV file and returns an array of CsvAddress objects. The class uses the CSV library to read the file and the CsvAddress class to create objects for each row in the file. The CSV.foreach method is used to iterate over the rows in the file and convert each row into a CsvAddress object using the CsvAddress.new method. The design decision here is to have a separate class to read CSV files and create CsvAddress objects. This class encapsulates the logic of reading the file and creating objects.
+
+- ResponseConverter class - This class converts response data from the SmartyStreets API into ApiAddress objects. The class has two methods: single and bulk. The single method takes a single address from the API response and creates an ApiAddress object from the data. The bulk method takes a list of addresses from the API response and creates a list of ApiAddress objects. Both methods extract the necessary data from the response and pass it to the ApiAddress.new method to create the objects. The design decision here is to have a separate class to convert the API response data into ApiAddress objects. This class encapsulates the logic of extracting the necessary data and creating objects.
+
+- SmartyStreetsApi class - This class makes requests to the SmartyStreets API, which is used to confirm the validity of addresses. This class provides a convenient way to interact with the SmartyStreets API and confirm the validity of addresses. It has two public class methods and one private class method.
+  - The first public class method confirm_address takes three arguments street, city, and zip_code, representing the address to be confirmed, and makes a GET request to the SmartyStreets API to confirm its validity. It returns a hash containing the response from the API.
+
+  - The second public class method bulk_addresses takes an array of hashes as an argument, where each hash represents an address containing the keys :street, :city, and :zip_code. It then makes a POST request to the SmartyStreets API to confirm the validity of all the addresses in bulk. It returns a hash containing the response from the API.
+
+  - The private class method conn sets up a connection to the SmartyStreets API using the Faraday gem. It returns a Faraday connection object with the base URL, authentication credentials, and candidate limit set. This method is used by the two public methods to make requests to the API.
 
 Overall, this program demonstrates how to use OOP principles, libraries, and APIs to build a tool that solves a specific problem: validating and correcting addresses. By following the Single Responsibility Principle, the program is easier to understand, easier to maintain, and easier to modify. Plus, it helps to avoid the dreaded "spaghetti code" - code that's so intertwined and convoluted that it's hard to tell what's going on.
 ### [Back to Table of Contents](#table-of-contents)
@@ -165,21 +179,20 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
 
 - See below for a more specified explanation of each test file for each class
 
-
 The code is a set of RSpec tests to test classes CsvAddress, CsvReader, and ResponseAddress for validating and processing addresses.
 
-The CsvAddress class is tested to ensure that it is initialized with valid attributes (street, city, zip_code) and will create an object for each address from a CSV file, even if it has incomplete or whitespace values. It is also tested to return the complete address as a string and to raise an ArgumentError if any attributes are empty.
+- _The ApiAddress class_ is tested to ensure that it can be initialized with valid attributes (street, city, zip, plus4_code, index), set the correct attribute values, and return a validated address string. It is also tested to set the index attribute to nil if it is not provided during initialization.
 
-The CsvReader class is tested to ensure that it can retrieve all addresses from a test CSV file and return them as CsvAddress objects with the correct values for each attribute.
+- _The CsvAddress class_ is tested to ensure that it is initialized with valid attributes (street, city, zip_code) and will create an object for each address from a CSV file, even if it has incomplete or whitespace values. It is also tested to return the complete address as a string and to raise an ArgumentError if any attributes are empty.
 
-The ResponseAddress class is tested by sending a request to the SmartyStreets API to confirm an address, and then verifying that it returns the correct full response, street, city, and zip code attributes. It is also tested to return 'Invalid Address' if the csv address doesn't exist. The tests use a gem called VCR to record and replay HTTP interactions with the API.
+- _The CsvReader class_ is tested to ensure that it can retrieve all addresses from a test CSV file and return them as CsvAddress objects with the correct values for each attribute.
 
-The SmartyStreetsApi tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
+- _The ResponseConverter class_ is tested to make sure it converts response data from the SmartyStreets API into a standardized format. The program contains a single test for the '.bulk' method in the 'ResponseConverter' class. The test includes sample data for three address candidates with various data points such as delivery line, last line, components, metadata, and analysis. The test case validates that the method can properly parse and format the given data.
+
+- _The SmartyStreetsApi_ tests contains two main blocks: "happy path" and "sad path". The "happy path" block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The "sad path" block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec's expect and raise_error matchers to verify that the correct error is raised under each scenario.
 
 **EXTENSION TESTING**
-The ResponseBulkAddress first test verifies that an array of correct ResponseBulkAddress objects is returned after a bulk API call. The second test verifies that each instance of ResponseBulkAddress has the correct instance variables. The third test verifies that if an address does not exist, no data is returned at the index point of that address in the original array. The final test checks that the complete method of ResponseBulkAddress returns the full address in one string.
 
-Unlike the single address check used previously, the API does not return anything when the address is "Invalid" when checking in bulk. A check was created in the runner_bulk file to compare index values of the initial request to the response values, if there was a missing index in the return that indicated that it was invalid thus indicating an 'Invalid Address'
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>

@@ -205,11 +205,26 @@ _ENVIRONMENT_
 
 <p>This program is an example of how to use various programming concepts, libraries, and APIs to build a tool that validates and corrects addresses using the SmartyStreets API.</p>
 
-<p>At a high level, the program reads in a CSV file containing addresses, creates CsvAddress objects to represent each address, validates and corrects each address using the SmartyStreetsApi API, and outputs the corrected address in the console.</p>
+<p>At a high level, the program reads in a CSV file containing addresses, creates CsvAddress objects to represent each address, validates and corrects each address using the SmartyStreetsApi API, and outputs the corrected address via the ResponseConverter in the console.</p>
 
-<p>The program is structured using object-oriented programming (OOP) principles. The CsvAddress class encapsulates the concept of an address, providing methods to access and format its data. The CsvReader class is responsible for reading a CSV file and creating CsvAddress objects from its data. The SmartyStreetsApi class handles making HTTP requests to the SmartyStreets API and parsing its responses into usable data. Finally, the ResponseAddress class encapsulates the concept of an address returned from the SmartyStreets API.</p>
-
-<p>The program also uses various libraries and APIs to accomplish its goals. The CSV library is used to read and parse the CSV file. The Faraday library is used to make HTTP requests to the SmartyStreets API. Finally, the dotenv gem is used to load environment variables containing the authentication credentials for the SmartyStreets API.</p>
+<p>The code provided includes five classes, each with its own responsibility. Here is an overview of each class alphabetically and its design decisions:</p>
+<ul><li>
+<p>ApiAddress class - This class represents an address returned from a third-party API. It has five attributes: street, city, zip, plus4_code, and index. The street, city, zip, and plus4_code are required attributes, and the index is an optional attribute. The class has an initializer that accepts the required attributes as arguments and sets them as instance variables. The initializer also sets the index attribute to nil if it is not provided. The validated method returns the full address as a string in the format "street, city, zip-code plus4-code". The design decision here is to have a separate class to represent an address returned from the API. This class encapsulates the data returned from the API and provides a way to access and validate that data.</p>
+</li><li>
+<p>CsvAddress class - This class represents an address in a CSV file. It has three attributes: street, city, and zip_code. The street, city, and zip_code are required attributes, and the class has an initializer that accepts these attributes as arguments. The initializer validates that the arguments are not empty or nil, sets them as instance variables after stripping whitespace, and raises an ArgumentError if any of them are blank. The complete method returns the full address as a string in the format "street, city, zip_code". The design decision here is to have a separate class to represent an address in a CSV file. This class encapsulates the data from the CSV file and provides a way to validate and format the data.</p>
+</li><li>
+<p>CsvReader class - This class reads addresses from a CSV file and returns an array of CsvAddress objects. The class uses the CSV library to read the file and the CsvAddress class to create objects for each row in the file. The CSV.foreach method is used to iterate over the rows in the file and convert each row into a CsvAddress object using the CsvAddress.new method. The design decision here is to have a separate class to read CSV files and create CsvAddress objects. This class encapsulates the logic of reading the file and creating objects.</p>
+</li><li>
+<p>ResponseConverter class - This class converts response data from the SmartyStreets API into ApiAddress objects. The class has two methods: single and bulk. The single method takes a single address from the API response and creates an ApiAddress object from the data. The bulk method takes a list of addresses from the API response and creates a list of ApiAddress objects. Both methods extract the necessary data from the response and pass it to the ApiAddress.new method to create the objects. The design decision here is to have a separate class to convert the API response data into ApiAddress objects. This class encapsulates the logic of extracting the necessary data and creating objects.</p>
+</li><li>
+<p>SmartyStreetsApi class - This class makes requests to the SmartyStreets API, which is used to confirm the validity of addresses. This class provides a convenient way to interact with the SmartyStreets API and confirm the validity of addresses. It has two public class methods and one private class method.</p>
+</li><li>
+<p>The first public class method confirm_address takes three arguments street, city, and zip_code, representing the address to be confirmed, and makes a GET request to the SmartyStreets API to confirm its validity. It returns a hash containing the response from the API.</p>
+</li><li>
+<p>The second public class method bulk_addresses takes an array of hashes as an argument, where each hash represents an address containing the keys :street, :city, and :zip_code. It then makes a POST request to the SmartyStreets API to confirm the validity of all the addresses in bulk. It returns a hash containing the response from the API.</p>
+</li><li>
+<p>The private class method conn sets up a connection to the SmartyStreets API using the Faraday gem. It returns a Faraday connection object with the base URL, authentication credentials, and candidate limit set. This method is used by the two public methods to make requests to the API.</p>
+</li></ul>
 
 <p>Overall, this program demonstrates how to use OOP principles, libraries, and APIs to build a tool that solves a specific problem: validating and correcting addresses. By following the Single Responsibility Principle, the program is easier to understand, easier to maintain, and easier to modify. Plus, it helps to avoid the dreaded “spaghetti code” - code that’s so intertwined and convoluted that it’s hard to tell what’s going on.</p>
 
@@ -303,7 +318,7 @@ _ENVIRONMENT_
 </div></div>
 
       <div id="footer">
-  Generated on Thu Apr  6 09:47:56 2023 by
+  Generated on Thu Apr  6 10:17:01 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
