@@ -5,9 +5,9 @@ require './lib/csv_address'
 require './lib/response_converter'
 require './lib/smarty_streets_api'
 
-class RunnerBulk  # Defines a class called RunnerBulk.
+class RunnerBulk # Defines a class called RunnerBulk.
   begin
-    csv_file_path = ARGV[0]  # Reads the path to the CSV file from the command line arguments.
+    csv_file_path = ARGV[0] # Reads the path to the CSV file from the command line arguments.
 
     # Validate CSV file path
     raise ArgumentError, 'CSV file path is required' if csv_file_path.nil? || csv_file_path.strip.empty?
@@ -18,7 +18,9 @@ class RunnerBulk  # Defines a class called RunnerBulk.
     addresses = csv_reader.read(csv_file_path)
 
     # Formats the addresses read from the CSV file as a list of hashes with "street", "city", and "zipcode" keys.
-    formatted_addresses = addresses.collect { |address| { "street" => address.street, "city" => address.city, "zipcode" => address.zip_code } }
+    formatted_addresses = addresses.collect do |address|
+      { 'street' => address.street, 'city' => address.city, 'zipcode' => address.zip_code }
+    end
 
     # Calls the SmartyStreetsApi to validate the addresses.
     response = SmartyStreetsApi.bulk_addresses(formatted_addresses)

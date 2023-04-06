@@ -7,6 +7,7 @@ class ApiAddress
               :zip,
               :plus4_code,
               :index
+
   # Initialize with all current and potential future attributes by using a method for addition of new ones.
   def initialize(street, city, zip, plus4_code, index = nil)
     @street = street
