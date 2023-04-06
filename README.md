@@ -24,7 +24,7 @@ _ENVIRONMENT_
 
 This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white) `VERSION 3.1.2` and was developed/tested with ![Mac](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) `VENTURA 13.2.1`
 
-Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detective/pulls?q=is%3Apr+is%3Aclosed) with a *PR template* and an extensive [commit history](https://github.com/RyanChrisSmith/address_detective/commits/main) to keep track of all changes
+Be curious and click on the links for the many [pull requests](https://github.com/RyanChrisSmith/address_detective/pulls?q=is%3Apr+is%3Aclosed) with a *PR template* and an extensive [commit history](https://github.com/RyanChrisSmith/address_detective/commits/main) to keep track of all changes
 <br>
 
 <u>
