@@ -97,13 +97,6 @@ _ENVIRONMENT_
 <p>Once a version manager is installed, install ruby using <code>$ rbenv install 3.1.2</code></p>
 </li><li>
 <p>To install a bundler for the gems already in the file, run that by inputting <code>$ gem install bundler</code></p>
-</li><li>
-<p>If the preference is all public methods’ args and return types, there are some YARD files created to see just that.</p>
-<ul><li>
-<p>In the terminal, run <code>$ yard server</code> and then go to url <code>http://localhost:8808/</code> in a browser window.</p>
-</li><li>
-<p>Feel free to click around on the different classes and see what each method in each class is doing</p>
-</li></ul>
 </li></ul>
 
 <p><em>Now you are ready to move forward with this repo!</em></p>
@@ -133,9 +126,16 @@ _ENVIRONMENT_
 <p>&lt;img src=“images/screenshot-2.png”&gt;</p>
 <ul><li>
 <p>This way, the API keys will stay out of the commit history keeping them safe from prying eyes</p>
-</li></ul>
+</li><li>
+<p>If the preference is to see the documentation for all public methods' args and return types, there are some YARD documentation created to see just that. See explanation of gems used <a href="#gems-why-these-ones">below</a> or go to the <a href="https://github.com/lsegal/yard">yard gem page</a></p>
+<ul><li>
+<p>In the terminal, run <code>$ yard server</code> and then go to url <code>http://localhost:8808/</code> in a browser window.</p>
+</li><li>
+<p>Feel free to click around on the different classes and see what each method in each class is doing</p>
 
 <h3 id="label-Back+to+Table+of+Contents"><a href="#table-of-contents">Back to Table of Contents</a></h3>
+</li></ul>
+</li></ul>
 
 <p>&lt;u&gt;</p>
 
@@ -177,6 +177,22 @@ _ENVIRONMENT_
 </li></ul>
 </li><li>
 <p>Then showing that response after the lamda or <code>-&gt;</code> with either the <em>corrected address</em> or <code>Invalid Address</code></p>
+</li></ul>
+
+<h2 id="label-EXTENSION"><strong><em>EXTENSION</em></strong></h2>
+<ul><li>
+<p><em>The API allows for bulk address looks ups beyond the single address method</em></p>
+<ul><li>
+<p><em>This does require some adjustments on where information is passed in the API call, such as headers and in the body, so pay close attention to the difference in the way the code is written</em></p>
+</li></ul>
+</li><li>
+<p><em>This program will allow for that in the same command line you just did, but with a much larger file</em></p>
+</li><li>
+<p><em>Run <code>$ ruby runner_bulk.rb data/test_bulk_addresses.csv</em></code></p>
+</li><li>
+<p><em>This allows for 100 addresses OR 32k worth of data to be requested in one call! Awesome!</em></p>
+</li><li>
+<p><em>The results will look quite similar to the single address look up from above, but the list will be much longer (to save space, that was not added on this README)</em></p>
 </li></ul>
 
 <h3 id="label-Back+to+Table+of+Contents"><a href="#table-of-contents">Back to Table of Contents</a></h3>
@@ -221,6 +237,8 @@ _ENVIRONMENT_
 
 <p><a href="https://github.com/bblimke/webmock">WebMock</a> - provides a way to stub HTTP requests and responses in Ruby tests</p>
 
+<p><a href="https://github.com/lsegal/yard">Yard</a> - documentation generation tool for Ruby code that simplifies the process of creating high-quality API documentation.</p>
+
 <h3 id="label-Back+to+Table+of+Contents"><a href="#table-of-contents">Back to Table of Contents</a></h3>
 
 <p>&lt;u&gt;</p>
@@ -262,6 +280,10 @@ _ENVIRONMENT_
 
 <p>The SmartyStreetsApi tests contains two main blocks: “happy path” and “sad path”. The “happy path” block tests that the SmartyStreetsApi.confirm_address method returns the expected result when given valid input. It also uses VCR to record and replay the HTTP request/response interaction with the SmartyStreets API, so that the tests can be run repeatedly without hitting the API every time. The “sad path” block contains several test cases that simulate various error scenarios that can occur when using the SmartyStreetsApi.confirm_address method. These include testing for connection errors, timeout errors, invalid JSON responses, and various HTTP error responses, such as 401 Unauthorized, 402 Payment Required, and 500 Server Error. The tests use RSpec’s expect and raise_error matchers to verify that the correct error is raised under each scenario.</p>
 
+<p><strong>EXTENSION TESTING</strong> The ResponseBulkAddress first test verifies that an array of correct ResponseBulkAddress objects is returned after a bulk API call. The second test verifies that each instance of ResponseBulkAddress has the correct instance variables. The third test verifies that if an address does not exist, no data is returned at the index point of that address in the original array. The final test checks that the complete method of ResponseBulkAddress returns the full address in one string.</p>
+
+<p>Unlike the single address check used previously, the API does not return anything when the address is “Invalid” when checking in bulk. A check was created in the runner_bulk file to compare index values of the initial request to the response values, if there was a missing index in the return that indicated that it was invalid thus indicating an ‘Invalid Address’</p>
+
 <h3 id="label-Back+to+Table+of+Contents"><a href="#table-of-contents">Back to Table of Contents</a></h3>
 
 <p>&lt;u&gt;</p>
@@ -272,8 +294,6 @@ _ENVIRONMENT_
 <ul><li>
 <p>Wrap error handling for third party API responses to future proof for versions 2 and beyond</p>
 </li><li>
-<p>Bulk look up of addresses rather than 1 at a time</p>
-</li><li>
 <p>Write a CSV file for output rather than just in command line</p>
 </li><li>
 <p>Handling other file types for initial input (pdf, json, yaml, xml)</p>
@@ -283,7 +303,7 @@ _ENVIRONMENT_
 </div></div>
 
       <div id="footer">
-  Generated on Tue Apr  4 09:40:29 2023 by
+  Generated on Thu Apr  6 09:47:56 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
