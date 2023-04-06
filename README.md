@@ -51,7 +51,7 @@ Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detectiv
   <img src="images/screenshot.png">
 
   - Make sure to label the keys exactly the same as in the screenshot `SMARTY_AUTH_ID` and `SMARTY_AUTH_TOKEN` so that the keys will work properly when the program is run
-  - ONE LAST THING BEFORE YOU GO ANYWHERE! We have to protect *YOUR* keys too! Make sure to add `.env` file to your `.gitignore` file like pictured below
+  - ONE LAST THING BEFORE YOU GO ANYWHERE! Make sure *YOUR* keys are protected too! Check in the `.gitignore` file to make sure it shows `.env` listed. If it is, you are safe, if not add it to the file.
 
 
   <img src="images/screenshot-2.png">
@@ -61,6 +61,7 @@ Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detectiv
   - If the preference is to see the documentation for all public methods' args and return types, there are some YARD documentation created to see just that. See explanation of gems used [below](#gems-why-these-ones) or go to the [yard gem page](https://github.com/lsegal/yard)
     - In the terminal, run `$ yard server` and then go to url `http://localhost:8808` in a browser window.
     - Feel free to click around on the different classes and see what each method in each class is doing
+    - Once you are done looking around, either `Ctrl-C` to stop the server or open a new terminal window with `Ctrl-N` before going to the next step
 ### [Back to Table of Contents](#table-of-contents)
 
 <u>
@@ -100,8 +101,109 @@ Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detectiv
   - *This program will allow for that in the same command line you just did, but with a much larger file*
   - *Run `$ ruby runner_bulk.rb data/test_bulk_addresses.csv`*
   - *This allows for 100 addresses OR 32k worth of data to be requested in one call! Awesome!*
-  - *The results will look quite similar to the single address look up from above, but the list will be much longer (to save space, that was not added on this README)*
+  - *The results will look quite similar to the single address look up from above, but the list will be much longer*
   - *Keep in mind this will use the same amount of API calls that it would if you went address by address, but was built for speed and convenience*
+  ```
+  143 E Maine St, Columbus, 43215 -> 143 E Main St, Columbus, 43215-5370
+  1 Emporia St, Tallahassee, 32301 -> Invalid Address
+  24 Second Ave, San Mateo, 94403 -> 24 2nd Ave, San Mateo, 94401-3828
+  24 Second Ave, San Mateo, 94404 -> 24 2nd Ave, San Mateo, 94401-3828
+  800 Middle Ave, Menlo Park, 94025 -> 800 Middle Ave, Menlo Park, 94025-5121
+  500 Arbor Rd, Menlo Park, 94025 -> 500 Arbor Rd, Menlo Park, 94025-5132
+  123 N Elm St, Springfield, 65802 -> Invalid Address
+  123 S Elm St, Springfield, 65802 -> Invalid Address
+  1 Main St, New York, 10001 -> 1 Main St, New York, 10044-0052
+  1234 Random Rd, Smallville, 12345 -> 1234 Random Rd, Schenectady, 12345-0001
+  123 Long St, Charleston, 29401 -> Invalid Address
+  1234 Second St, Los Angeles, 90001 -> Invalid Address
+  543 W Main St, Columbus, 43215 -> Invalid Address
+  678 E High St, Springfield, 65802 -> Invalid Address
+  910 S Main St, Akron, 44311 -> Invalid Address
+  11 Elmwood Dr, San Francisco, 94132 -> Invalid Address
+  1200 Lincoln Ave, San Rafael, 94901 -> Invalid Address
+  55 State St, Boston, 02109 -> Invalid Address
+  500 Boylston St, Boston, 02116 -> 500 Boylston St, Boston, 02116-3740
+  1 Memorial Dr, Cambridge, 02142 -> 1 Memorial Dr, Cambridge, 02142-1313
+  700 Technology Sq, Cambridge, 02139 -> 700 Technology Sq, Cambridge, 02139-3557
+  15 Washington St, Cambridge, 02140 -> Invalid Address
+  11 Waverly St, Boston, 02135 -> Invalid Address
+  2 West St, Boston, 02111 -> 2 West St, Boston, 02111-1204
+  123 Maple St, Portland, 04101 -> Invalid Address
+  456 Pine St, Portland, 04102 -> Invalid Address
+  789 Oak St, Portland, 04103 -> Invalid Address
+  1122 Forest St, Portland, 04104 -> Invalid Address
+  135 Elm St, Portland, 04105 -> Invalid Address
+  158 Birch St, Portland, 04106 -> Invalid Address
+  221 Walnut St, Portland, 04107 -> 221 Walnut St, South Portland, 04106-4733
+  354 Chestnut St, Portland, 04108 -> Invalid Address
+  487 Cedar St, Portland, 04109 -> Invalid Address
+  510 Spruce St, Portland, 04110 -> Invalid Address
+  633 Pine St, San Francisco, 94108 -> Invalid Address
+  755 Cherry St, San Francisco, 94109 -> Invalid Address
+  878 Mango St, San Francisco, 94110 -> Invalid Address
+  991 Banana St, San Francisco, 94111 -> Invalid Address
+  112 Avocado St, San Francisco, 94112 -> Invalid Address
+  235 Orange St, San Francisco, 94113 -> Invalid Address
+  358 Lemon St, San Francisco, 94114 -> Invalid Address
+  481 Grape St, San Francisco, 94115 -> Invalid Address
+  504 Watermelon St, San Francisco, 94116 -> Invalid Address
+  627 Peach St, San Francisco, 94117 -> Invalid Address
+  750 Plum St, San Francisco, 94118 -> Invalid Address
+  873 Papaya St, San Francisco, 94119 -> Invalid Address
+  996 Kiwi St, San Francisco, 94120 -> Invalid Address
+  113 Walnut St, San Diego, 92101 -> Invalid Address
+  246 Maple St, San Diego, 92102 -> Invalid Address
+  379 Pine St, San Diego, 92103 -> Invalid Address
+  412 Oak St, San Diego, 92104 -> Invalid Address
+  535 Chestnut St, San Diego, 92105 -> Invalid Address
+  658 Cedar St, San Diego, 92106 -> Invalid Address
+  781 Spruce St, San Diego, 92107 -> Invalid Address
+  814 Pineapple St, San Diego, 92108 -> Invalid Address
+  937 Cherry St, San Diego, 92109 -> Invalid Address
+  1060 Mango St, San Diego, 92110 -> Invalid Address
+  1183 Banana St, San Diego, 92111 -> Invalid Address
+  1306 Avocado St, San Diego, 92112 -> Invalid Address
+  143 Walnut St, San Jose, 95110 -> Invalid Address
+  276 Maple St, San Jose, 95111 -> Invalid Address
+  409 Pine St, San Jose, 95112 -> Invalid Address
+  532 Oak St, San Jose, 95113 -> Invalid Address
+  655 Chestnut St, San Jose, 95114 -> Invalid Address
+  778 Cedar St, San Jose, 95115 -> Invalid Address
+  221 Walnut St, Portland, 04107 -> 221 Walnut St, South Portland, 04106-4733
+  354 Chestnut St, Portland, 04108 -> Invalid Address
+  487 Cedar St, Portland, 04109 -> Invalid Address
+  510 Spruce St, Portland, 04110 -> Invalid Address
+  358 Lemon St, San Francisco, 94114 -> Invalid Address
+  481 Grape St, San Francisco, 94115 -> Invalid Address
+  504 Watermelon St, San Francisco, 94116 -> Invalid Address
+  627 Peach St, San Francisco, 94117 -> Invalid Address
+  750 Plum St, San Francisco, 94118 -> Invalid Address
+  873 Papaya St, San Francisco, 94119 -> Invalid Address
+  996 Kiwi St, San Francisco, 94120 -> Invalid Address
+  113 Walnut St, San Diego, 92101 -> Invalid Address
+  246 Maple St, San Diego, 92102 -> Invalid Address
+  379 Pine St, San Diego, 92103 -> Invalid Address
+  1234 Random Rd, Smallville, 12345 -> 1234 Random Rd, Schenectady, 12345-0001
+  123 Long St, Charleston, 29401 -> Invalid Address
+  1234 Second St, Los Angeles, 90001 -> Invalid Address
+  543 W Main St, Columbus, 43215 -> Invalid Address
+  678 E High St, Springfield, 65802 -> Invalid Address
+  910 S Main St, Akron, 44311 -> Invalid Address
+  11 Elmwood Dr, San Francisco, 94132 -> Invalid Address
+  678 E High St, Springfield, 65802 -> Invalid Address
+  910 S Main St, Akron, 44311 -> Invalid Address
+  11 Elmwood Dr, San Francisco, 94132 -> Invalid Address
+  1200 Lincoln Ave, San Rafael, 94901 -> Invalid Address
+  55 State St, Boston, 02109 -> Invalid Address
+  500 Boylston St, Boston, 02116 -> 500 Boylston St, Boston, 02116-3740
+  1 Memorial Dr, Cambridge, 02142 -> 1 Memorial Dr, Cambridge, 02142-1313
+  700 Technology Sq, Cambridge, 02139 -> 700 Technology Sq, Cambridge, 02139-3557
+  15 Washington St, Cambridge, 02140 -> Invalid Address
+  11 Waverly St, Boston, 02135 -> Invalid Address
+  2 West St, Boston, 02111 -> 2 West St, Boston, 02111-1204
+  123 Maple St, Portland, 04101 -> Invalid Address
+  456 Pine St, Portland, 04102 -> Invalid Address
+  ```
 
 
 
@@ -179,7 +281,7 @@ Overall, this program demonstrates how to use OOP principles, libraries, and API
   - That is there courtesy of the VCR gem
   - These are the recordings of the original API call that are then used in the subsequent times running the tests. This way, the actual API calls are limited after the test has been run the first time.
   - There is a cassette tape for every test that has `:vcr` in its `it` block description
-  - The API key and token that are used in the call are hidden, but to be doubly sure this file is also added to the .gitignore so it isnt public
+  - The API key and token that are used in the call are hidden, but to be doubly sure this file is also can also be added to the `.gitignore` so it isn't public
     - The configuration for the VCR cassette tapes is in the `spec_helper` file at the bottom if you are curious
 
 - See below for a more specified explanation of each test file for each class
@@ -204,6 +306,7 @@ The code is a set of RSpec tests to test classes CsvAddress, CsvReader, and Resp
 </u>
 
 - Wrap error handling for third party API responses to future proof for versions 2 and beyond
+- Implementing a background worker for the async API calls before the software is handling large data sets
 - Write a CSV file for output rather than just in command line
 - Handling other file types for initial input (pdf, json, yaml, xml)
 - Error handling for input file issues (wrong headers, no commas, too many commas, weird encoding, strange characters, extra comma(s) in street attribute)
