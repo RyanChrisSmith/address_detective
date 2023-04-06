@@ -46,7 +46,7 @@ Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detectiv
 - Well, well, well, it looks like we have a secret agent in our midst! There's an API Key involved that's so top-secret, it doesn't even come with the repo! Gotta keep those classified files under lock and key, am I right?
   - Go to `https://www.smarty.com/products/us-address-verification` to get an `API key` and `Authorization token`, you will need this and once back I can direct you as to where they can go on your machine to stay safe and sound.
   - Create a file `$ touch .env` which should create an empty `.env` file at the root level of the files
-  - In that `.env` file add your keys as pictured below, but put the keys in the spaces that are scratched out.
+  - In that `.env` file add your keys as pictured below
 
   <img src="images/screenshot.png">
 
@@ -59,7 +59,7 @@ Utilized many [pull requests](https://github.com/RyanChrisSmith/address_detectiv
   - This way, the API keys will stay out of the commit history keeping them safe from prying eyes
 
   - If the preference is to see the documentation for all public methods' args and return types, there are some YARD documentation created to see just that. See explanation of gems used [below](#gems-why-these-ones) or go to the [yard gem page](https://github.com/lsegal/yard)
-    - In the terminal, run `$ yard server` and then go to url `http://localhost:8808/` in a browser window.
+    - In the terminal, run `$ yard server` and then go to url `http://localhost:8808` in a browser window.
     - Feel free to click around on the different classes and see what each method in each class is doing
 ### [Back to Table of Contents](#table-of-contents)
 
