@@ -21,7 +21,11 @@ class Runner
     addresses.each do |address|
       response = SmartyStreetsApi.confirm_address(address.street, address.city, address.zip_code)
       corrected_address = ResponseConverter.single(response)
+      if corrected_address.nil?
+        puts "#{address.complete} -> Invalid Address"
+      else
       puts "#{address.complete} -> #{corrected_address.validated}"
+      end
     end
   # Catch ArgumentError exceptions
   rescue ArgumentError => e
